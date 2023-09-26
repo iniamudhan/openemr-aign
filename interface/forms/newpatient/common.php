@@ -677,8 +677,8 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                             <span>Recorder</span>
                             <audio id="recorder" muted hidden></audio>
                             <div>
-                                <input type="button" onclick="#" id="start">Record</input>
-                                <input type="button" onclick="#" id="stop">Stop Recording</input>
+                                <input type="button" onclick="#" value="Record" id="start" />
+                                <input type="button" onclick="#" id="stop" value="Stop Recording" />
                             </div>
                             <span>Saved Recording</span>
                             <audio id="player" controls></audio>
