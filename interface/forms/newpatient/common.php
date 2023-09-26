@@ -825,7 +825,8 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
         }
 
         startRecording() {
-            this.stopPropagation()
+            var e = window.event
+            e.stopPropagation()
             if (this.isRecording) return
             this.isRecording = true
             this.startRef.innerHTML = 'Recording...'
@@ -837,7 +838,8 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
         }
         
         stopRecording() {
-            this.stopPropagation()
+            var e = window.event
+            e.stopPropagation()
             if (!this.isRecording) return
             this.isRecording = false
             this.startRef.innerHTML = 'Record'
