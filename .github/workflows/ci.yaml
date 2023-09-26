@@ -20,6 +20,6 @@ jobs:
         echo "$PRIVATE_KEY" > private_key.pem
         chmod 600 private_key.pem
 
-        ssh -o StrictHostKeyChecking=no -i private_key.pem $HOST "cd /var/www/html/openemr && git add . && git commit 'from remote' && git push && git fetch && git pull"
+        ssh -o StrictHostKeyChecking=no -i private_key.pem $HOST "cd /var/www/html/openemr && git add . && git commit -m 'from remote' && git push && git fetch && git pull"
 
         rm -f private_key.pem
