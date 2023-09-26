@@ -677,8 +677,8 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                             <span>Recorder</span>
                             <audio id="recorder" muted hidden></audio>
                             <div>
-                                <button id="start">Record</button>
-                                <button id="stop">Stop Recording</button>
+                                <input type="button" onclick="#" id="start">Record</input>
+                                <input type="button" onclick="#" id="stop">Stop Recording</input>
                             </div>
                             <span>Saved Recording</span>
                             <audio id="player" controls></audio>
@@ -825,8 +825,6 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
         }
 
         startRecording() {
-            var e = window.event
-            e.stopPropagation()
             if (this.isRecording) return
             this.isRecording = true
             this.startRef.innerHTML = 'Recording...'
@@ -838,8 +836,6 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
         }
         
         stopRecording() {
-            var e = window.event
-            e.stopPropagation()
             if (!this.isRecording) return
             this.isRecording = false
             this.startRef.innerHTML = 'Record'
