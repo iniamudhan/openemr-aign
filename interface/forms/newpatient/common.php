@@ -842,20 +842,20 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
 
     <!-- Reording Container -->
     <div id="aign-voice-recorder">
-        <div class="container">
-            <h1>VOICE RECORDING</h1>
-            <span>Recorder</span>
-            <!-- <audio id="recorder" muted hidden></audio> -->
-            <div>
-                <input type="button" onclick="#" id="record" value="Start Recording" />
-                <input type="button" onclick="#" id="diagnosis" value="Make Diagnosis" disabled />
-            </div>
-            <!-- <span>Saved Recording</span>
-                            <audio id="player" controls></audio> -->
-            <div id="transcribedText"></div>
-            <div id="outputSummary"></div>
-            <div id="outputDiagnosis"></div>
+    <div class="container">
+        <h1>VOICE RECORDING</h1>
+        <div>
+            <button id="record">
+                <i class="fa fa-play"></i> 
+                <i class="fa fa-stop" style="display: none;"></i> 
+            </button>
+            <div id="mic" style="border-radius: 4px; margin-top: 1rem"></div>
+            <input type="button" onclick="#" id="diagnosis" value="Make Diagnosis" disabled />
         </div>
+        <div id="transcribedText"></div>
+        <div id="outputSummary"></div>
+        <div id="outputDiagnosis"></div>
+    </div>
     </div>
 
     <?php $oemr_ui->oeBelowContainerDiv(); ?>
