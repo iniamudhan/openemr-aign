@@ -301,7 +301,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
         }
     </style>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/7.3.2/wavesurfer.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/7.3.2/plugin/wavesurfer.microphone.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/3.2.0/plugin/wavesurfer.microphone.min.js"></script>
 
     <script>
 // Create an instance of WaveSurfer
