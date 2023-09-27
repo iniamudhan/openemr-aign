@@ -683,6 +683,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                             <span>Saved Recording</span>
                             <audio id="player" controls></audio>
                         </div>
+                        <div id = "transcribedText"></div>
                     </fieldset>
                     <fieldset>
                         <legend><?php echo xlt('Reason for Visit') ?></legend>
@@ -766,7 +767,15 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
     </div><!--End of container div-->
     <?php $oemr_ui->oeBelowContainerDiv(); ?>
 
+<script src="./main.js">
+</script>
 <script>
+    const startRef = document.querySelector("#start")
+    const stopRef = document.querySelector("#stop")
+    startRef.onclick = onRecordPress();
+    stopRef.onclick = onRecordPress();
+</script>
+<!-- <script>
     class VoiceRecorder {
         constructor() {
             if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -784,7 +793,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
             this.playerRef = document.querySelector("#player")
             this.startRef = document.querySelector("#start")
             this.stopRef = document.querySelector("#stop")
-            
+
             this.startRef.onclick = this.startRecording.bind(this)
             this.stopRef.onclick = this.stopRecording.bind(this)
 
@@ -792,7 +801,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                 audio: true,
                 video: false
             }
-            
+
         }
 
         handleSuccess(stream) {
@@ -812,10 +821,10 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
         handleError(error) {
             console.log("navigator.getUserMedia error: ", error)
         }
-        
+
         onMediaRecorderDataAvailable(e) { this.chunks.push(e.data) }
-        
-        onMediaRecorderStop(e) { 
+
+        onMediaRecorderStop(e) {
                 const blob = new Blob(this.chunks, { 'type': 'audio/ogg; codecs=opus' })
                 const audioURL = window.URL.createObjectURL(blob)
                 this.playerRef.src = audioURL
@@ -834,7 +843,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                 .then(this.handleSuccess.bind(this))
                 .catch(this.handleError.bind(this))
         }
-        
+
         stopRecording() {
             if (!this.isRecording) return
             this.isRecording = false
@@ -842,10 +851,10 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
             this.recorderRef.pause()
             this.mediaRecorder.stop()
         }
-        
+
     }
     window.voiceRecorder = new VoiceRecorder()
-</script>
+</script> -->
 <script>
     const fac_id_sel = document.getElementById("facility_id_sel");
     fac_id_sel.addEventListener("change", () => {
