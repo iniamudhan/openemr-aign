@@ -866,9 +866,14 @@ recButton.onclick = function () {
     const recordRef = document.querySelector("#record")
     const diganosisRef = document.querySelector("#diagnosis")
     recordRef.addEventListener('click',(e)=>{
+        console.log("Innter html");
         console.log(recordRef.innerHTML)
         recordRef.innerHTML = 'Stop Recording'
         console.log(recordRef.innerHTML)
+        console.log("Value");
+        console.log(recordRef.value)
+        recordRef.value = 'Stop Recording'
+        console.log(recordRef.value)
         onRecordPress()
     })
     diganosisRef.addEventListener('click',(e)=>{
