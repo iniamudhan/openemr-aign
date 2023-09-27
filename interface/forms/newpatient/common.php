@@ -772,8 +772,12 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
 <script>
     const startRef = document.querySelector("#start")
     const stopRef = document.querySelector("#stop")
-    startRef.onclick = onRecordPress();
-    stopRef.onclick = onRecordPress();
+    startRef.addEventListener('click',(e)=>{
+        onRecordPress()
+    })
+    stopRef.addEventListener('click',(e)=>{
+        onRecordPress()
+    })
 </script>
 <!-- <script>
     class VoiceRecorder {
