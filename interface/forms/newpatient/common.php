@@ -677,8 +677,8 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                             <span>Recorder</span>
                             <!-- <audio id="recorder" muted hidden></audio> -->
                             <div>
-                                <input type="button" onclick="#" value="Record" id="start" />
-                                <input type="button" onclick="#" id="stop" value="Stop Recording" />
+                                <input type="button" onclick="#" id="record" value="Start Recording" />
+                                <input type="button" onclick="#" id="diagnosis" value="Make Diagnosis" />
                             </div>
                             <!-- <span>Saved Recording</span>
                             <audio id="player" controls></audio> -->
@@ -770,13 +770,16 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
 <script src="./main.js">
 </script>
 <script>
-    const startRef = document.querySelector("#start")
-    const stopRef = document.querySelector("#stop")
-    startRef.addEventListener('click',(e)=>{
+    const recordRef = document.querySelector("#record")
+    const diganosisRef = document.querySelector("#diagnosis")
+    recordRef.addEventListener('click',(e)=>{
+        console.log(recordRef.innerHTML)
+        recordRef.innerHTML = 'Stop Recording'
+        console.log(recordRef.innerHTML)
         onRecordPress()
     })
-    stopRef.addEventListener('click',(e)=>{
-        onRecordPress()
+    diganosisRef.addEventListener('click',(e)=>{
+        makeDiagnosis()
     })
 </script>
 <!-- <script>
