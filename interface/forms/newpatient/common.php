@@ -675,15 +675,15 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                         <div class="container">
                             <h1>VOICE RECORDING</h1>
                             <span>Recorder</span>
-                            <audio id="recorder" muted hidden></audio>
+                            <!-- <audio id="recorder" muted hidden></audio> -->
                             <div>
                                 <input type="button" onclick="#" value="Record" id="start" />
                                 <input type="button" onclick="#" id="stop" value="Stop Recording" />
                             </div>
-                            <span>Saved Recording</span>
-                            <audio id="player" controls></audio>
+                            <!-- <span>Saved Recording</span>
+                            <audio id="player" controls></audio> -->
+                            <div id = "transcribedText"></div>
                         </div>
-                        <div id = "transcribedText"></div>
                     </fieldset>
                     <fieldset>
                         <legend><?php echo xlt('Reason for Visit') ?></legend>
