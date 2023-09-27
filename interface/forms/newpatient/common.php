@@ -161,7 +161,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
 <head>
     <?php Header::setupHeader(['datetime-picker', 'common']); ?>
     <title><?php echo xlt('Patient Encounter'); ?></title>
-
+    <link rel="stylesheet" href="public/themes/aign_style.css">
 
     <!-- validation library -->
     <?php
@@ -768,7 +768,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                         </div>
     </fieldset>
     </div>
-    
+
     <?php $oemr_ui->oeBelowContainerDiv(); ?>
 
 <script src="./main.js">
