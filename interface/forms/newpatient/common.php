@@ -749,6 +749,8 @@ recButton.onclick = function () {
                             <!-- <span>Saved Recording</span>
                             <audio id="player" controls></audio> -->
                             <div id = "transcribedText"></div>
+                            <div id = "outputSummary"></div>
+                            <div id = "outputDiagnosis"></div>
                         </div>
                     </fieldset>
                     <fieldset>
