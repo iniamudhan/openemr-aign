@@ -744,7 +744,7 @@ recButton.onclick = function () {
                             <!-- <audio id="recorder" muted hidden></audio> -->
                             <div>
                                 <input type="button" onclick="#" id="record" value="Start Recording" />
-                                <input type="button" onclick="#" id="diagnosis" value="Make Diagnosis" />
+                                <input type="button" onclick="#" id="diagnosis" value="Make Diagnosis" disabled/>
                             </div>
                             <!-- <span>Saved Recording</span>
                             <audio id="player" controls></audio> -->
@@ -865,19 +865,23 @@ recButton.onclick = function () {
 <script>
     const recordRef = document.querySelector("#record")
     const diganosisRef = document.querySelector("#diagnosis")
+    let recordingDone = false;
     recordRef.addEventListener('click',(e)=>{
-        console.log("Innter html");
-        console.log(recordRef.innerHTML)
-        recordRef.innerHTML = 'Stop Recording'
-        console.log(recordRef.innerHTML)
-        console.log("Value");
-        console.log(recordRef.value)
-        recordRef.value = 'Stop Recording'
-        console.log(recordRef.value)
+        if (recordRef.value == 'Stop Recording') {
+            recordingDone = true;
+            recordRef.value = 'Start Recording'
+            diganosisRef.disabled = false;
+        } else {
+            recordRef.value = 'Stop Recording'
+        }
         onRecordPress()
     })
     diganosisRef.addEventListener('click',(e)=>{
-        makeDiagnosis()
+        if (recordingDone) {
+            makeDiagnosis()
+        } else {
+            console.log('Diagnosis could not made without recording');
+        }
     })
 </script>
 <!-- <script>
