@@ -161,7 +161,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
 <head>
     <?php Header::setupHeader(['datetime-picker', 'common']); ?>
     <title><?php echo xlt('Patient Encounter'); ?></title>
-    <link rel="stylesheet" href="public/themes/aign_style.css">
+    <link rel="stylesheet" href="<?php echo $webroot; ?>/public/themes/aign_style.css?v=<?php echo $v_js_includes; ?>">
 
     <!-- validation library -->
     <?php
