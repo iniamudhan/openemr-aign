@@ -158,9 +158,12 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
     "ORDER BY type, begdate", array($pid));
 ?>
 <!DOCTYPE html>
+
 <head>
     <?php Header::setupHeader(['datetime-picker', 'common']); ?>
-    <title><?php echo xlt('Patient Encounter'); ?></title>
+    <title>
+        <?php echo xlt('Patient Encounter'); ?>
+    </title>
     <link rel="stylesheet" href="<?php echo $webroot; ?>/public/themes/aign_style.css?v=<?php echo $v_js_includes; ?>">
 
     <!-- validation library -->
@@ -171,16 +174,16 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
 
     <?php include_once("{$GLOBALS['srcdir']}/ajax/facility_ajax_jav.inc.php"); ?>
     <script>
-        const mypcc = '' + <?php echo js_escape($GLOBALS['phone_country_code']); ?>;
+        const mypcc = '' + <? php echo js_escape($GLOBALS['phone_country_code']); ?>;
 
         // Process click on issue title.
         function newissue() {
             dlgopen('../../patient_file/summary/add_edit_issue.php', '_blank', 700, 535, '', '', {
                 buttons: [
-                    {text: <?php echo xlj('Close'); ?>, close: true, style: 'default btn-sm'}
+                    { text: <? php echo xlj('Close'); ?>, close: true, style: 'default btn-sm'}
                 ]
             });
-            return false;
+        return false;
         }
 
         // callback from add_edit_issue.php:
@@ -189,7 +192,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
             s.options[s.options.length] = new Option(title, issue, true, true);
         }
 
-        <?php
+        <? php
         //Gets validation rules from Page Validation list.
         //Note that for technical reasons, we are bypassing the standard validateUsingPageRules() call.
         $collectthis = collectValidationPageRules("/interface/forms/newpatient/common.php");
@@ -199,7 +202,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
             $collectthis = json_sanitize($collectthis["new_encounter"]["rules"]);
         }
         ?>
-        let collectvalidation = <?php echo $collectthis; ?>;
+            let collectvalidation = <? php echo $collectthis; ?>;
         $(function () {
             window.saveClicked = function (event) {
                 const submit = submitme(1, event, 'new-encounter-form', collectvalidation);
@@ -222,15 +225,15 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
             });
 
             $('.datepicker').datetimepicker({
-                <?php $datetimepicker_timepicker = true; ?>
-                <?php $datetimepicker_showseconds = false; ?>
-                <?php $datetimepicker_formatInput = true; ?>
-                <?php require($GLOBALS['srcdir'] . '/js/xl/jquery-datetimepicker-2-5-4.js.php'); ?>
-                <?php // can add any additional javascript settings to datetimepicker here; need to prepend first setting with a comma ?>
+                <? php $datetimepicker_timepicker = true; ?>
+                <? php $datetimepicker_showseconds = false; ?>
+                <? php $datetimepicker_formatInput = true; ?>
+                <? php require($GLOBALS['srcdir']. '/js/xl/jquery-datetimepicker-2-5-4.js.php'); ?>
+                <? php // can add any additional javascript settings to datetimepicker here; need to prepend first setting with a comma ?>
             });
         });
 
-        const isPosEnabled = "" + <?php echo js_escape($GLOBALS['set_pos_code_encounter']); ?>;
+        const isPosEnabled = "" + <? php echo js_escape($GLOBALS['set_pos_code_encounter']); ?>;
 
         function getPOS() {
             if (!isPosEnabled) {
@@ -243,13 +246,13 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                 data: {
                     mode: "get_pos",
                     facility_id: facility,
-                    csrf_token_form: <?php echo js_escape(CsrfUtils::collectCsrfToken()); ?>
+                    csrf_token_form: <? php echo js_escape(CsrfUtils:: collectCsrfToken()); ?>
                 }
             }).done(function (fid) {
-                document.forms[0].pos_code.value = JSON.parse(fid);
-            }).fail(function (xhr) {
-                console.log('error', xhr);
-            });
+                        document.forms[0].pos_code.value = JSON.parse(fid);
+                    }).fail(function (xhr) {
+                        console.log('error', xhr);
+                    });
         }
 
         function newUserSelected() {
@@ -260,20 +263,20 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                 data: {
                     mode: "get_user_data",
                     provider_id: provider,
-                    csrf_token_form: <?php echo js_escape(CsrfUtils::collectCsrfToken()); ?>
+                    csrf_token_form: <? php echo js_escape(CsrfUtils:: collectCsrfToken()); ?>
                 }
             }).done(function (data) {
-                let rtn = JSON.parse(data);
-                document.forms[0].facility_id.value = rtn[0];
-                if (isPosEnabled) {
-                    document.forms[0].pos_code.value = rtn[1];
-                }
-                if (Number(rtn[2]) === 1) {
-                    document.forms[0]['billing_facility'].value = rtn[0];
-                }
-            }).fail(function (xhr) {
-                console.log('error', xhr);
-            });
+                        let rtn = JSON.parse(data);
+                        document.forms[0].facility_id.value = rtn[0];
+                        if (isPosEnabled) {
+                            document.forms[0].pos_code.value = rtn[1];
+                        }
+                        if (Number(rtn[2]) === 1) {
+                            document.forms[0]['billing_facility'].value = rtn[0];
+                        }
+                    }).fail(function (xhr) {
+                        console.log('error', xhr);
+                    });
         }
 
         // Handler for Cancel clicked when creating a new encounter.
@@ -293,79 +296,14 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
     </script>
     <style>
         @media only screen and (max-width: 1024px) {
+
             #visit-details [class*="col-"],
             #visit-issues [class*="col-"] {
                 width: 100%;
-                text-align: <?php echo ($_SESSION['language_direction'] == 'rtl') ? 'right ' : 'left '?> !important;
+                text-align: <?php echo ($_SESSION['language_direction']=='rtl') ? 'right ': 'left ' ?> !important;
             }
         }
     </style>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/7.3.2/wavesurfer.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/3.2.0/plugin/wavesurfer.microphone.min.js"></script>
-
-    <script>
-// Create an instance of WaveSurfer
-var wavesurfer = WaveSurfer.create({
-  container: '#mic',
-  waveColor: 'rgb(200, 0, 200)',
-  progressColor: 'rgb(100, 0, 100)'
-});
-
-// Initialize the Record plugin
-var record = wavesurfer.registerPlugin(WaveSurfer.plugins.Record.create());
-
-// Render recorded audio
-record.on('record-end', function (blob) {
-  var container = document.querySelector('#recordings');
-  var recordedUrl = URL.createObjectURL(blob);
-
-  // Create wavesurfer from the recorded audio
-  var wavesurferRecorded = WaveSurfer.create({
-    container: container,
-    waveColor: 'rgb(200, 100, 0)',
-    progressColor: 'rgb(100, 50, 0)',
-    url: recordedUrl
-  });
-
-  // Play button
-  var button = container.appendChild(document.createElement('button'));
-  button.textContent = 'Play';
-  button.onclick = function () {
-    wavesurferRecorded.playPause();
-  };
-  wavesurferRecorded.on('pause', function () {
-    button.textContent = 'Play';
-  });
-  wavesurferRecorded.on('play', function () {
-    button.textContent = 'Pause';
-  });
-
-  // Download link
-  var link = container.appendChild(document.createElement('a'));
-  link.href = recordedUrl;
-  link.download = 'recording.' + (blob.type.split(';')[0].split('/')[1] || 'webm');
-  link.textContent = 'Download recording';
-});
-
-// Record button
-var recButton = document.querySelector('#record');
-
-recButton.onclick = function () {
-  if (record.isRecording()) {
-    record.stopRecording();
-    recButton.textContent = 'Record';
-    return;
-  }
-
-  recButton.disabled = true;
-
-  record.startRecording().then(function () {
-    recButton.textContent = 'Stop';
-    recButton.disabled = false;
-  });
-};
-
-        </script>
     <?php
     if ($viewmode) {
         $body_javascript = '';
@@ -424,6 +362,7 @@ recButton.onclick = function () {
     $MBO = new OpenEMR\Billing\MiscBillingOptions();
     ?>
 </head>
+
 <body <?php echo $body_javascript; ?>>
     <div id="container_div" class="<?php echo attr($oemr_ui->oeContainer()); ?> mt-3">
         <div class="row">
@@ -433,22 +372,25 @@ recButton.onclick = function () {
                 <?php echo $oemr_ui->pageHeading() . "\r\n"; ?>
             </div>
         </div>
-        <form class="mt-3" id="new-encounter-form" method='post' action="<?php echo $rootdir ?>/forms/newpatient/save.php" name='new_encounter'>
-            <input type="hidden" id="facility_id" name="facility_id" value="<?php echo attr(getDefinedFacility()); ?>" />
+        <form class="mt-3" id="new-encounter-form" method='post'
+            action="<?php echo $rootdir ?>/forms/newpatient/save.php" name='new_encounter'>
+            <input type="hidden" id="facility_id" name="facility_id"
+                value="<?php echo attr(getDefinedFacility()); ?>" />
             <?php if ($viewmode && $mode !== "followup") { ?>
-                <input type='hidden' name='mode' value='update' />
-                <input type='hidden' name='id' value='<?php echo (isset($_GET["id"])) ? attr($_GET["id"]) : '' ?>' />
+            <input type='hidden' name='mode' value='update' />
+            <input type='hidden' name='id' value='<?php echo (isset($_GET["id"])) ? attr($_GET["id"]) : '' ?>' />
             <?php } else { ?>
-                <input type='hidden' name='mode' value='new' />
+            <input type='hidden' name='mode' value='new' />
             <?php } ?>
             <input type="hidden" name="csrf_token_form" value="<?php echo attr(CsrfUtils::collectCsrfToken()); ?>" />
 
             <?php if ($mode === "followup") { ?>
-                <input type='hidden' name='parent_enc_id' value='<?php echo attr($encounterId); ?>' />
+            <input type='hidden' name='parent_enc_id' value='<?php echo attr($encounterId); ?>' />
             <?php } ?>
 
             <fieldset>
-                <legend><?php echo xlt('Visit Details') ?>
+                <legend>
+                    <?php echo xlt('Visit Details') ?>
                     <small>
                         <?php echo (!empty($encounter_followup)) ? (xlt("Follow up for") . ": " . text($encounter_followup) . " " . xlt("Dated") . ": " . text($followup_date)) : ''; ?>
                     </small>
@@ -457,9 +399,14 @@ recButton.onclick = function () {
                     <div class="form-row align-items-center">
                         <div class="col-sm <?php displayOption('enc_enable_visit_category'); ?>">
                             <div class="form-group">
-                                <label for="pc_catid" class="text-right"><?php echo xlt('Visit Category:'); ?></label>
-                                <select name='pc_catid' id='pc_catid' class='form-control' <?php echo ($mode === "followup") ? 'disabled' : ''; ?>>
-                                    <option value='_blank'>-- <?php echo xlt('Select One'); ?> --</option>
+                                <label for="pc_catid" class="text-right">
+                                    <?php echo xlt('Visit Category:'); ?>
+                                </label>
+                                <select name='pc_catid' id='pc_catid' class='form-control' <?php echo
+                                    ($mode==="followup" ) ? 'disabled' : '' ; ?>>
+                                    <option value='_blank'>--
+                                        <?php echo xlt('Select One'); ?> --
+                                    </option>
                                     <?php
                                     //Bring only patient and group categories
                                     $visitSQL = "SELECT pc_catid, pc_catname, pc_cattype
@@ -514,19 +461,23 @@ recButton.onclick = function () {
                                     ?>
                                 </select>
                                 <?php if ($mode === "followup") { ?>
-                                    <input name="pc_catid" value="<?php echo attr($result['pc_catid']); ?>" hidden />
+                                <input name="pc_catid" value="<?php echo attr($result['pc_catid']); ?>" hidden />
                                 <?php } ?>
                             </div>
                         </div>
                         <div class="col-sm <?php displayOption('enc_enable_class');?>">
                             <div class="form-group">
-                                <label for='class' class="text-right"><?php echo xlt('Class'); ?>:</label>
+                                <label for='class' class="text-right">
+                                    <?php echo xlt('Class'); ?>:
+                                </label>
                                 <?php echo generate_select_list('class_code', '_ActEncounterCode', $viewmode ? $result['class_code'] : '', '', ''); ?>
                             </div>
                         </div>
                         <div class="col-sm <?php displayOption('enc_enable_type');?>">
                             <div class="form-group">
-                                <label for='encounter_type' class="text-right"><?php echo xlt('Type'); ?>:</label>
+                                <label for='encounter_type' class="text-right">
+                                    <?php echo xlt('Type'); ?>:
+                                </label>
                                 <?php
                                 // we need to convert from our selected code if we have one to our list type
                                 $encounter_type_option = $result['encounter_type_code'] ?? '';
@@ -550,11 +501,14 @@ recButton.onclick = function () {
                         if ($sensitivities && count($sensitivities)) :
                             usort($sensitivities, "sensitivity_compare");
                             ?>
-                            <div class="col-sm <?php displayOption('enc_sensitivity_visibility');?>">
-                                <div class="form-group">
-                                    <label for="pc_catid" class="text-right"><?php echo xlt('Sensitivity:'); ?> <i id='sensitivity-tooltip' class="fa fa-info-circle text-primary" aria-hidden="true"></i></label>
-                                    <select name='form_sensitivity' id='form_sensitivity' class='form-control'>
-                                        <?php
+                        <div class="col-sm <?php displayOption('enc_sensitivity_visibility');?>">
+                            <div class="form-group">
+                                <label for="pc_catid" class="text-right">
+                                    <?php echo xlt('Sensitivity:'); ?> <i id='sensitivity-tooltip'
+                                        class="fa fa-info-circle text-primary" aria-hidden="true"></i>
+                                </label>
+                                <select name='form_sensitivity' id='form_sensitivity' class='form-control'>
+                                    <?php
                                         foreach ($sensitivities as $value) {
                                             // Omit sensitivities to which this user does not have access.
                                             if (!AclMain::aclCheckCore('sensitivities', $value[1])) {
@@ -569,33 +523,50 @@ recButton.onclick = function () {
                                         $selected = ($viewmode && !$result['sensitivity']) ? "selected" : "";
                                         echo "<option value='' $selected>" . xlt('None{{Sensitivity}}') . "</option>\n";
                                         ?>
-                                    </select>
-                                </div>
+                                </select>
                             </div>
+                        </div>
                         <?php endif; ?>
                     </div>
                     <div class="form-row align-items-center">
                         <div class="col-sm <?php displayOption('enc_service_date');?>">
                             <div class="form-group">
-                                <label for='form_date' class="text-right"><?php echo xlt('Date of Service:'); ?></label>
-                                <input type='text' class='form-control datepicker' name='form_date' id='form_date' <?php echo ($disabled ?? '') ?> value='<?php echo $viewmode ? attr(oeFormatDateTime($result['date'])) : attr(oeFormatDateTime(date('Y-m-d H:i:00'))); ?>' title='<?php echo xla('Date of service'); ?>' />
+                                <label for='form_date' class="text-right">
+                                    <?php echo xlt('Date of Service:'); ?>
+                                </label>
+                                <input type='text' class='form-control datepicker' name='form_date' id='form_date' <?php
+                                    echo ($disabled ?? '' ) ?> value='
+                                <?php echo $viewmode ? attr(oeFormatDateTime($result['date'])) : attr(oeFormatDateTime(date('Y-m-d H:i:00'))); ?>'
+                                title='
+                                <?php echo xla('Date of service'); ?>' />
                             </div>
                         </div>
                         <div class="col-sm <?php echo ($GLOBALS['gbl_visit_onset_date'] == 1) ?: 'd-none'; ?>">
                             <div class="form-group">
-                                <label for='form_onset_date' class="text-right"><?php echo xlt('Onset/hosp. date:'); ?> &nbsp;<i id='onset-tooltip' class="fa fa-info-circle text-primary" aria-hidden="true"></i></label>
-                                <input type='text' class='form-control datepicker' name='form_onset_date' id='form_onset_date' value='<?php echo $viewmode && $result['onset_date'] !== '0000-00-00 00:00:00' ? attr(oeFormatDateTime($result['onset_date'])) : ''; ?>' title='<?php echo xla('Date of onset or hospitalization'); ?>' />
+                                <label for='form_onset_date' class="text-right">
+                                    <?php echo xlt('Onset/hosp. date:'); ?> &nbsp;<i id='onset-tooltip'
+                                        class="fa fa-info-circle text-primary" aria-hidden="true"></i>
+                                </label>
+                                <input type='text' class='form-control datepicker' name='form_onset_date'
+                                    id='form_onset_date' value='<?php echo $viewmode && $result[' onset_date']
+                                    !=='0000-00-00 00:00:00' ? attr(oeFormatDateTime($result['onset_date'])) : '' ; ?>'
+                                title='
+                                <?php echo xla('Date of onset or hospitalization'); ?>' />
                             </div>
                         </div>
                         <div class="col-sm <?php echo ($GLOBALS['gbl_visit_referral_source'] == 1) ?: 'd-none';?>">
                             <div class="form-group">
-                                <label for="form_referral_source" class="text-right"><?php echo xlt('Referral Source'); ?>:</label>
+                                <label for="form_referral_source" class="text-right">
+                                    <?php echo xlt('Referral Source'); ?>:
+                                </label>
                                 <?php echo generate_select_list('form_referral_source', 'refsource', $viewmode ? $result['referral_source'] : '', ''); ?>
                             </div>
                         </div>
                         <div class="col-sm <?php echo ($GLOBALS['set_pos_code_encounter'] == 1) ?: 'd-none';?>">
                             <div class="form-group">
-                                <label for='pos_code' class="text-right"><?php echo xlt('POS Code'); ?>:</label>
+                                <label for='pos_code' class="text-right">
+                                    <?php echo xlt('POS Code'); ?>:
+                                </label>
                                 <select name="pos_code" id="pos_code" class='form-control'>
                                     <?php
                                     $pc = new POSRef();
@@ -616,10 +587,18 @@ recButton.onclick = function () {
                         </div>
                         <div class="col-sm <?php echo ($GLOBALS['hide_billing_widget'] != 1) ?: 'd-none';?>">
                             <div class="form-group">
-                                <label for='in_collection' class="text-right"><?php echo xlt('In Collection'); ?>:</label>
+                                <label for='in_collection' class="text-right">
+                                    <?php echo xlt('In Collection'); ?>:
+                                </label>
                                 <select class='form-control' name='in_collection' id='in_collection'>
-                                    <option value="1" <?php echo (($result["in_collection"] ?? null) == 1) ? "selected" : ""; ?>><?php echo xlt('Yes'); ?></option>
-                                    <option value="0" <?php echo (($result["in_collection"] ?? null) == 0) ? "selected" : ""; ?>><?php echo xlt('No'); ?></option>
+                                    <option value="1" <?php echo (($result["in_collection"] ?? null)==1) ? "selected"
+                                        : "" ; ?>>
+                                        <?php echo xlt('Yes'); ?>
+                                    </option>
+                                    <option value="0" <?php echo (($result["in_collection"] ?? null)==0) ? "selected"
+                                        : "" ; ?>>
+                                        <?php echo xlt('No'); ?>
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -628,8 +607,11 @@ recButton.onclick = function () {
                     <div class="form-row align-items-center">
                         <div class="col-sm">
                             <div class="form-group">
-                                <label for='provider_id' class="text-right"><?php echo xlt('Encounter Provider'); ?>:</label>
-                                <select name='provider_id' id='provider_id' class='form-control' onChange="newUserSelected()">
+                                <label for='provider_id' class="text-right">
+                                    <?php echo xlt('Encounter Provider'); ?>:
+                                </label>
+                                <select name='provider_id' id='provider_id' class='form-control'
+                                    onChange="newUserSelected()">
                                     <?php
                                     if ($viewmode) {
                                         $provider_id = $result['provider_id'];
@@ -661,7 +643,9 @@ recButton.onclick = function () {
                         </div>
                         <div class="col-sm <?php displayOption('enc_enable_referring_provider');?>">
                             <div class="form-group">
-                                <label for='referring_provider_id' class="text-right"><?php echo xlt('Referring Provider'); ?>:</label>
+                                <label for='referring_provider_id' class="text-right">
+                                    <?php echo xlt('Referring Provider'); ?>:
+                                </label>
                                 <?php
                                 if ($viewmode && !empty($result["referring_provider_id"])) {
                                     $MBO->genReferringProviderSelect('referring_provider_id', '-- ' . xl("Please Select") . ' --', $result["referring_provider_id"]);
@@ -673,19 +657,27 @@ recButton.onclick = function () {
                         </div>
                         <div class="col-sm <?php displayOption('enc_enable_facility'); ?>">
                             <div class="form-group">
-                                <label for='facility_id_sel' class="text-right"><?php echo xlt('Facility'); ?>:</label>
-                                <select name='facility_id_sel' id='facility_id_sel' class='form-control' <?php echo ($mode === "followup") ? 'disabled' : ''; ?> >
+                                <label for='facility_id_sel' class="text-right">
+                                    <?php echo xlt('Facility'); ?>:
+                                </label>
+                                <select name='facility_id_sel' id='facility_id_sel' class='form-control' <?php echo
+                                    ($mode==="followup" ) ? 'disabled' : '' ; ?> >
                                     <?php
                                     $fac = getFacilityList();
                                     foreach ($fac as $f) : ?>
-                                        <option value="<?php echo attr($f['id']); ?>" <?php echo ($f['selected'] == true) ? 'selected' : '';?>><?php echo text($f['name']); ?></option>
+                                    <option value="<?php echo attr($f['id']); ?>" <?php echo ($f['selected']==true)
+                                        ? 'selected' : '' ;?>>
+                                        <?php echo text($f['name']); ?>
+                                    </option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm <?php echo ($GLOBALS['hide_billing_widget'] != 1) ?: 'd-none'; ?>">
                             <div class="form-group">
-                                <label for='billing_facility' class="text-right"><?php echo xlt('Billing Facility'); ?>:</label>
+                                <label for='billing_facility' class="text-right">
+                                    <?php echo xlt('Billing Facility'); ?>:
+                                </label>
                                 <?php
                                 if (!empty($default_bill_fac_override)) {
                                     $default_bill_fac = $default_bill_fac_override;
@@ -710,25 +702,39 @@ recButton.onclick = function () {
                         <!-- Discharge Disposition -->
                         <div class="col-sm <?php displayOption('enc_enable_discharge_disposition'); ?>">
                             <div class="form-group">
-                                <label for='facility_id' class="text-right"><?php echo xlt('Discharge Disposition'); ?>:</label>
+                                <label for='facility_id' class="text-right">
+                                    <?php echo xlt('Discharge Disposition'); ?>:
+                                </label>
                                 <select name='discharge_disposition' id='discharge_disposition' class='form-control'>
-                                    <option value='_blank'>-- <?php echo xlt('Select One'); ?> --</option>
+                                    <option value='_blank'>--
+                                        <?php echo xlt('Select One'); ?> --
+                                    </option>
                                     <?php
                                     $dischargeListDisposition = new ListService();
                                     $dischargeDisposiitons = $dischargeListDisposition->getOptionsByListName('discharge-disposition') ?? [];
                                     foreach ($dischargeDisposiitons as $dispositon) {
                                         $selected = ($result['discharge_disposition'] ?? null) == $dispositon['option_id'] ? "selected='selected'" : "";
                                         ?>
-                                    <option value="<?php echo attr($dispositon['option_id']); ?>" <?php echo $selected; ?> ><?php echo text($dispositon['title']); ?></option>
+                                    <option value="<?php echo attr($dispositon['option_id']); ?>" <?php echo $selected;
+                                        ?> >
+                                        <?php echo text($dispositon['title']); ?>
+                                    </option>
                                     <?php } ?>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm <?php echo ($GLOBALS['enable_group_therapy'] == 1) ?: 'd-none'; ?>">
                             <div class="form-group">
-                                <label for="form_group" class="text-right"><?php echo xlt('Group name'); ?>:</label>
-                                <input type='text' name='form_group' class='form-control' id="form_group" placeholder='<?php echo xla('Click to select'); ?>' value='<?php echo $viewmode && in_array($result['pc_catid'], $therapyGroupCategories) ? attr(getGroup($result['external_id'])['group_name']) : ''; ?>' onclick='sel_group()' title='<?php echo xla('Click to select group'); ?>' readonly />
-                                <input type='hidden' name='form_gid' value='<?php echo $viewmode && in_array($result['pc_catid'], $therapyGroupCategories) ? attr($result['external_id']) : '' ?>' />
+                                <label for="form_group" class="text-right">
+                                    <?php echo xlt('Group name'); ?>:
+                                </label>
+                                <input type='text' name='form_group' class='form-control' id="form_group"
+                                    placeholder='<?php echo xla(' Click to select'); ?>' value='
+                                <?php echo $viewmode && in_array($result['pc_catid'], $therapyGroupCategories) ? attr(getGroup($result['external_id'])['group_name']) : ''; ?>'
+                                onclick='sel_group()' title='
+                                <?php echo xla('Click to select group'); ?>' readonly />
+                                <input type='hidden' name='form_gid' value='<?php echo $viewmode && in_array($result['
+                                    pc_catid'], $therapyGroupCategories) ? attr($result['external_id']) : '' ?>' />
                             </div>
                         </div>
                     </div>
@@ -738,25 +744,12 @@ recButton.onclick = function () {
             <div class="form-row">
                 <div class="col-sm">
                     <fieldset>
-                        <div class="container">
-                            <h1>VOICE RECORDING</h1>
-                            <span>Recorder</span>
-                            <!-- <audio id="recorder" muted hidden></audio> -->
-                            <div>
-                                <input type="button" onclick="#" id="record" value="Start Recording" />
-                                <input type="button" onclick="#" id="diagnosis" value="Make Diagnosis" disabled/>
-                            </div>
-                            <!-- <span>Saved Recording</span>
-                            <audio id="player" controls></audio> -->
-                            <div id = "transcribedText"></div>
-                            <div id = "outputSummary"></div>
-                            <div id = "outputDiagnosis"></div>
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <legend><?php echo xlt('Reason for Visit') ?></legend>
+                        <legend>
+                            <?php echo xlt('Reason for Visit') ?>
+                        </legend>
                         <div class="form-row mx-3 h-100">
-                            <textarea name="reason" id="reason" class="form-control" cols="80" rows="4"><?php echo $viewmode ? text($result['reason']) : text($GLOBALS['default_chief_complaint']); ?></textarea>
+                            <textarea name="reason" id="reason" class="form-control" cols="80"
+                                rows="4"><?php echo $viewmode ? text($result['reason']) : text($GLOBALS['default_chief_complaint']); ?></textarea>
                         </div>
                     </fieldset>
                 </div>
@@ -773,19 +766,24 @@ recButton.onclick = function () {
                     }
                     if ($issuesauth) {
                         ?>
-                        <fieldset>
-                            <legend>
-                                <?php echo xlt('Link/Add Issues to This Visit') ?>
-                            </legend>
-                            <div id="visit-issues">
-                                <div class="form-row px-3">
-                                    <div class="pb-1 col-sm">
-                                        <?php if (AclMain::aclCheckCore('patients', 'med', '', 'write')) { ?>
-                                            <a href="../../patient_file/summary/add_edit_issue.php" class="btn d-block btn-primary btn-add btn-sm enc_issue" onclick="top.restoreSession()"><?php echo xlt('Add Issue'); ?></a>
-                                        <?php } ?>
-                                    </div>
-                                    <select multiple name='issues[]' class='form-control' title='<?php echo xla('Hold down [Ctrl] for multiple selections or to unselect'); ?>' size='4'>
-                                        <?php
+                    <fieldset>
+                        <legend>
+                            <?php echo xlt('Link/Add Issues to This Visit') ?>
+                        </legend>
+                        <div id="visit-issues">
+                            <div class="form-row px-3">
+                                <div class="pb-1 col-sm">
+                                    <?php if (AclMain::aclCheckCore('patients', 'med', '', 'write')) { ?>
+                                    <a href="../../patient_file/summary/add_edit_issue.php"
+                                        class="btn d-block btn-primary btn-add btn-sm enc_issue"
+                                        onclick="top.restoreSession()">
+                                        <?php echo xlt('Add Issue'); ?>
+                                    </a>
+                                    <?php } ?>
+                                </div>
+                                <select multiple name='issues[]' class='form-control' title='<?php echo xla(' Hold down
+                                    [Ctrl] for multiple selections or to unselect'); ?>' size='4'>
+                                    <?php
                                         while ($irow = sqlFetchArray($ires)) {
                                             $list_id = $irow['id'];
                                             $tcode = $irow['type'];
@@ -809,14 +807,16 @@ recButton.onclick = function () {
                                                 text(substr($irow['title'], 0, 40)) . "</option>\n";
                                         }
                                         ?>
-                                    </select>
-                                    <p><i><?php echo xlt('To link this encounter/consult to an existing issue, click the '
+                                </select>
+                                <p><i>
+                                        <?php echo xlt('To link this encounter/consult to an existing issue, click the '
                                                 . 'desired issue above to highlight it and then click [Save]. '
-                                                . 'Hold down [Ctrl] button to select multiple issues.'); ?></i></p>
-                                </div>
+                                                . 'Hold down [Ctrl] button to select multiple issues.'); ?>
+                                    </i></p>
                             </div>
-                        </fieldset>
-                        <?php
+                        </div>
+                    </fieldset>
+                    <?php
                     }
                     ?>
                 </div>
@@ -826,8 +826,14 @@ recButton.onclick = function () {
                 <div class="col-sm-12 text-left position-override pl-3">
                     <div class="btn-group" role="group">
                         <?php $link_submit = ($viewmode || empty($_GET['autoloaded'])) ? '' : 'link_submit'; ?>
-                        <button type="button" class="btn btn-primary btn-save" onclick="top.restoreSession(); saveClicked(undefined);"><?php echo xlt('Save'); ?></button>
-                        <button type="button" class="btn btn-cancel <?php echo $link_submit; ?>" onClick="return cancelClickedOld()"><?php echo xlt('Cancel'); ?></button>
+                        <button type="button" class="btn btn-primary btn-save"
+                            onclick="top.restoreSession(); saveClicked(undefined);">
+                            <?php echo xlt('Save'); ?>
+                        </button>
+                        <button type="button" class="btn btn-cancel <?php echo $link_submit; ?>"
+                            onClick="return cancelClickedOld()">
+                            <?php echo xlt('Cancel'); ?>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -836,220 +842,189 @@ recButton.onclick = function () {
 
     <!-- Reording Container -->
     <div id="aign-voice-recorder">
-    <fieldset>
-                        <div class="container">
-                            <h1>VOICE RECORDING</h1>
-                            <!-- <audio id="recorder" muted hidden></audio> -->
-                            <div>
-                                <input type="button" onclick="#" value="Record" id="start" />
-                                <input type="button" onclick="#" id="stop" value="Stop Recording" />
-                            </div>
-                            <!-- <span>Saved Recording</span>
+        <div class="container">
+            <h1>VOICE RECORDING</h1>
+            <span>Recorder</span>
+            <!-- <audio id="recorder" muted hidden></audio> -->
+            <div>
+                <input type="button" onclick="#" id="record" value="Start Recording" />
+                <input type="button" onclick="#" id="diagnosis" value="Make Diagnosis" disabled />
+            </div>
+            <!-- <span>Saved Recording</span>
                             <audio id="player" controls></audio> -->
-                            <div id = "transcribedText"></div>
-
-
-
-  <button id="record">Record</button>
-
-<div id="mic" style="border: 1px solid #ddd; border-radius: 4px; margin-top: 1rem"></div>
-
-<div id="recordings" style="margin: 1rem 0"></div>
-
-                        </div>
-    </fieldset>
+            <div id="transcribedText"></div>
+            <div id="outputSummary"></div>
+            <div id="outputDiagnosis"></div>
+        </div>
     </div>
 
     <?php $oemr_ui->oeBelowContainerDiv(); ?>
+    <script src="https://unpkg.com/wavesurfer.js@7.3.2/dist/wavesurfer.min.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js@7.3.2/dist/plugins/record.min.js"></script>
+    <script src="./main.js">
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const recordRef = document.querySelector("#record")
+            const diganosisRef = document.querySelector("#diagnosis")
 
-<script src="./main.js">
-</script>
-<script>
-    const recordRef = document.querySelector("#record")
-    const diganosisRef = document.querySelector("#diagnosis")
-    let recordingDone = false;
-    recordRef.addEventListener('click',(e)=>{
-        if (recordRef.value == 'Stop Recording') {
-            recordingDone = true;
-            recordRef.value = 'Start Recording'
-            diganosisRef.disabled = false;
-        } else {
-            recordRef.value = 'Stop Recording'
-        }
-        onRecordPress()
-    })
-    diganosisRef.addEventListener('click',(e)=>{
-        if (recordingDone) {
-            makeDiagnosis()
-        } else {
-            console.log('Diagnosis could not made without recording');
-        }
-    })
-</script>
-<!-- <script>
-    class VoiceRecorder {
-        constructor() {
-            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                console.log("getUserMedia supported")
-            } else {
-                console.log("getUserMedia is not supported on your browser!")
+            const options = {
+                "height": 150,
+                "normalize": true,
+                "waveColor": "#e100ff",
+                "barWidth": 4,
+                "barGap": 1,
+                "barRadius": 23,
+                "barHeight": 1.6,
+                "barAlign": "center",
+                "minPxPerSec": 1,
+                "fillParent": true,
+                "mediaControls": false,
+                "autoplay": false,
+                "interact": false,
+                "dragToSeek": false,
+                "hideScrollbar": false,
+                "audioRate": 1,
+                "autoScroll": true,
+                "autoCenter": true,
             }
 
-            this.mediaRecorder
-            this.stream
-            this.chunks = []
-            this.isRecording = false
+            var wavesurfer = WaveSurfer.create({
+                container: '#mic', 
+                waveColor: 'rgb(200, 0, 200)',
+                progressColor: 'rgb(100, 0, 100)',
+                options: options
+            });
 
-            this.recorderRef = document.querySelector("#recorder")
-            this.playerRef = document.querySelector("#player")
-            this.startRef = document.querySelector("#start")
-            this.stopRef = document.querySelector("#stop")
+            var record = wavesurfer.registerPlugin(WaveSurfer.Record.create());
 
-            this.startRef.onclick = this.startRecording.bind(this)
-            this.stopRef.onclick = this.stopRecording.bind(this)
+            var isRecording = false;
+            var playIcon = recordRef.querySelector('.fa-play');
+            var stopIcon = recordRef.querySelector('.fa-stop');
 
-            this.constraints = {
-                audio: true,
-                video: false
-            }
+            let recordingDone = false;
+            recordRef.addEventListener('click', (e) => {
 
-        }
+                if (isRecording) {
+                    // Stop recording
+                    recordingDone = true;
+                    diganosisRef.disabled = false;
 
-        handleSuccess(stream) {
-            this.stream = stream
-            this.stream.oninactive = () => {
-                console.log("Stream ended!")
-            };
-            this.recorderRef.srcObject = this.stream
-            this.mediaRecorder = new MediaRecorder(this.stream)
-            console.log(this.mediaRecorder)
-            this.mediaRecorder.ondataavailable = this.onMediaRecorderDataAvailable.bind(this)
-            this.mediaRecorder.onstop = this.onMediaRecorderStop.bind(this)
-            this.recorderRef.play()
-            this.mediaRecorder.start()
-        }
+                    record.stopRecording();
+                    isRecording = false;
+                    playIcon.style.display = 'inline'; 
+                    stopIcon.style.display = 'none';   
+                    return;
+                }
 
-        handleError(error) {
-            console.log("navigator.getUserMedia error: ", error)
-        }
+                // Start recording
+                recordRef.disabled = true;
 
-        onMediaRecorderDataAvailable(e) { this.chunks.push(e.data) }
+                record.startRecording().then(function () {
+                    isRecording = true;
+                    playIcon.style.display = 'none';    
+                    stopIcon.style.display = 'inline';  
+                    recordRef.disabled = false;
+                });
 
-        onMediaRecorderStop(e) {
-                const blob = new Blob(this.chunks, { 'type': 'audio/ogg; codecs=opus' })
-                const audioURL = window.URL.createObjectURL(blob)
-                this.playerRef.src = audioURL
-                this.chunks = []
-                this.stream.getAudioTracks().forEach(track => track.stop())
-                this.stream = null
-        }
+                onRecordPress()
+            })
+            diganosisRef.addEventListener('click', (e) => {
+                if (recordingDone) {
+                    makeDiagnosis()
+                } else {
+                    console.log('Diagnosis could not made without recording');
+                }
+            })
+        });
 
-        startRecording() {
-            if (this.isRecording) return
-            this.isRecording = true
-            this.startRef.innerHTML = 'Recording...'
-            this.playerRef.src = ''
-            navigator.mediaDevices
-                .getUserMedia(this.constraints)
-                .then(this.handleSuccess.bind(this))
-                .catch(this.handleError.bind(this))
-        }
+    </script>
+  
+    <script>
+        const fac_id_sel = document.getElementById("facility_id_sel");
+        fac_id_sel.addEventListener("change", () => {
+            let fac_id = document.getElementById("facility_id");
+            fac_id.value = fac_id_sel[fac_id_sel.selectedIndex].value;
+            getPOS();
+        });
 
-        stopRecording() {
-            if (!this.isRecording) return
-            this.isRecording = false
-            this.startRef.innerHTML = 'Record'
-            this.recorderRef.pause()
-            this.mediaRecorder.stop()
-        }
-
-    }
-    window.voiceRecorder = new VoiceRecorder()
-</script> -->
-<script>
-    const fac_id_sel = document.getElementById("facility_id_sel");
-    fac_id_sel.addEventListener("change", () => {
-        let fac_id = document.getElementById("facility_id");
-        fac_id.value = fac_id_sel[fac_id_sel.selectedIndex].value;
-        getPOS();
-    });
-
-    <?php
+    <? php
     if (!$viewmode) { ?>
-    function duplicateVisit(enc, datestr) {
-        if (!confirm(<?php echo xlj("A visit already exists for this patient today. Click Cancel to open it, or OK to proceed with creating a new one.") ?>)) {
-            // User pressed the cancel button, so re-direct to today's encounter
-            top.restoreSession();
-            parent.left_nav.setEncounter(datestr, enc, window.name);
-            parent.left_nav.loadFrame('enc2', window.name, 'patient_file/encounter/encounter_top.php?set_encounter=' + encodeURIComponent(enc));
-            return;
-        }
-        // otherwise just continue normally
-    }
-        <?php
+            function duplicateVisit(enc, datestr) {
+                if (!confirm(<? php echo xlj("A visit already exists for this patient today. Click Cancel to open it, or OK to proceed with creating a new one.") ?>)) {
+                    // User pressed the cancel button, so re-direct to today's encounter
+                    top.restoreSession();
+                    parent.left_nav.setEncounter(datestr, enc, window.name);
+                    parent.left_nav.loadFrame('enc2', window.name, 'patient_file/encounter/encounter_top.php?set_encounter=' + encodeURIComponent(enc));
+                    return;
+                }
+                // otherwise just continue normally
+            }
+            <? php
     // Search for an encounter from today
-        $erow = sqlQuery("SELECT fe.encounter, fe.date " .
-        "FROM form_encounter AS fe, forms AS f WHERE " .
-        "fe.pid = ? " .
-        " AND fe.date >= ? " .
-        " AND fe.date <= ? " .
-        " AND " .
-        "f.formdir = 'newpatient' AND f.form_id = fe.id AND f.deleted = 0 " .
+        $erow = sqlQuery("SELECT fe.encounter, fe.date ".
+        "FROM form_encounter AS fe, forms AS f WHERE ".
+        "fe.pid = ? ".
+        " AND fe.date >= ? ".
+        " AND fe.date <= ? ".
+        " AND ".
+        "f.formdir = 'newpatient' AND f.form_id = fe.id AND f.deleted = 0 ".
         "ORDER BY fe.encounter DESC LIMIT 1", array($pid, date('Y-m-d 00:00:00'), date('Y-m-d 23:59:59')));
 
-        if (!empty($erow['encounter'])) {
+            if (!empty($erow['encounter'])) {
             // If there is an encounter from today then present the duplicate visit dialog
-            echo "duplicateVisit(" . js_escape($erow['encounter']) . ", " .
-            js_escape(oeFormatShortDate(substr($erow['date'], 0, 10))) . ");\n";
+            echo "duplicateVisit(".js_escape($erow['encounter']). ", ".
+                    js_escape(oeFormatShortDate(substr($erow['date'], 0, 10))). ");\n";
+            }
         }
-    }
     ?>
-    <?php
+    <? php
     if ($GLOBALS['enable_group_therapy']) { ?>
-    /* hide / show group name input */
-    let groupCategories = <?php echo json_encode($therapyGroupCategories); ?>;
-    $('#pc_catid').on('change', function () {
-        if (groupCategories.indexOf($(this).val()) > -1) {
-            $('#therapy_group_name').show();
-        } else {
-            $('#therapy_group_name').hide();
-        }
-    });
+            /* hide / show group name input */
+            let groupCategories = <? php echo json_encode($therapyGroupCategories); ?>;
+            $('#pc_catid').on('change', function () {
+                if (groupCategories.indexOf($(this).val()) > -1) {
+                    $('#therapy_group_name').show();
+                } else {
+                    $('#therapy_group_name').hide();
+                }
+            });
 
-    function sel_group() {
-        top.restoreSession();
-        const url = '<?php echo $GLOBALS['webroot']?>/interface/main/calendar/find_group_popup.php';
-        dlgopen(url, '_blank', 500, 400, '', '', {
-            buttons: [
-                {text: <?php echo xlj('Close'); ?>, close: true, style: 'default btn-sm'}
+            function sel_group() {
+                top.restoreSession();
+                const url = '<?php echo $GLOBALS['webroot']?>/interface/main/calendar/find_group_popup.php';
+                dlgopen(url, '_blank', 500, 400, '', '', {
+                    buttons: [
+                        { text: <? php echo xlj('Close'); ?>, close: true, style: 'default btn-sm'}
             ]
         });
-    }
+        }
 
-    // This is for callback by the find-group popup.
-    function setgroup(gid, name) {
-        var f = document.forms[0];
-        f.form_group.value = name;
-        f.form_gid.value = gid;
-    }
+        // This is for callback by the find-group popup.
+        function setgroup(gid, name) {
+            var f = document.forms[0];
+            f.form_group.value = name;
+            f.form_gid.value = gid;
+        }
 
-        <?php
+        <? php
         if ($viewmode && in_array($result['pc_catid'], $therapyGroupCategories)) {?>
-    $('#therapy_group_name').show();
-            <?php
+            $('#therapy_group_name').show();
+            <? php
         } ?>
-        <?php
+        <? php
     } ?>
 
-    $(function () {
-        $('#sensitivity-tooltip').attr({"title": <?php echo xlj('If set as high will restrict visibility of encounter to users belonging to certain groups (AROs). By default - Physicians and Administrators'); ?>, "data-toggle": "tooltip", "data-placement": "bottom"}).tooltip();
-        $('#onset-tooltip').attr({"title": <?php echo xlj('Hospital date needed for successful billing of hospital encounters'); ?>, "data-toggle": "tooltip", "data-placement": "bottom"}).tooltip();
+            $(function () {
+                $('#sensitivity-tooltip').attr({ "title": <? php echo xlj('If set as high will restrict visibility of encounter to users belonging to certain groups (AROs). By default - Physicians and Administrators'); ?>, "data-toggle": "tooltip", "data-placement": "bottom"}).tooltip();
+        $('#onset-tooltip').attr({ "title": <? php echo xlj('Hospital date needed for successful billing of hospital encounters'); ?>, "data-toggle": "tooltip", "data-placement": "bottom"}).tooltip();
     });
 
-</script>
+    </script>
 
-<?php if (!empty($GLOBALS['text_templates_enabled'])) { ?>
+    <?php if (!empty($GLOBALS['text_templates_enabled'])) { ?>
     <script src="<?php echo $GLOBALS['web_root'] ?>/library/js/CustomTemplateLoader.js"></script>
-<?php } ?>
+    <?php } ?>
 </body>
+
 </html>
