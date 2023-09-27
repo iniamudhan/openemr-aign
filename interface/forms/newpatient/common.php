@@ -161,7 +161,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
 <head>
     <?php Header::setupHeader(['datetime-picker', 'common']); ?>
     <title><?php echo xlt('Patient Encounter'); ?></title>
-
+    <link rel="stylesheet" href="<?php echo $webroot; ?>/public/themes/aign_style.css?v=<?php echo $v_js_includes; ?>">
 
     <!-- validation library -->
     <?php
@@ -300,6 +300,72 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
             }
         }
     </style>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/7.3.2/wavesurfer.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/3.2.0/plugin/wavesurfer.microphone.min.js"></script>
+
+    <script>
+// Create an instance of WaveSurfer
+var wavesurfer = WaveSurfer.create({
+  container: '#mic',
+  waveColor: 'rgb(200, 0, 200)',
+  progressColor: 'rgb(100, 0, 100)'
+});
+
+// Initialize the Record plugin
+var record = wavesurfer.registerPlugin(WaveSurfer.plugins.Record.create());
+
+// Render recorded audio
+record.on('record-end', function (blob) {
+  var container = document.querySelector('#recordings');
+  var recordedUrl = URL.createObjectURL(blob);
+
+  // Create wavesurfer from the recorded audio
+  var wavesurferRecorded = WaveSurfer.create({
+    container: container,
+    waveColor: 'rgb(200, 100, 0)',
+    progressColor: 'rgb(100, 50, 0)',
+    url: recordedUrl
+  });
+
+  // Play button
+  var button = container.appendChild(document.createElement('button'));
+  button.textContent = 'Play';
+  button.onclick = function () {
+    wavesurferRecorded.playPause();
+  };
+  wavesurferRecorded.on('pause', function () {
+    button.textContent = 'Play';
+  });
+  wavesurferRecorded.on('play', function () {
+    button.textContent = 'Pause';
+  });
+
+  // Download link
+  var link = container.appendChild(document.createElement('a'));
+  link.href = recordedUrl;
+  link.download = 'recording.' + (blob.type.split(';')[0].split('/')[1] || 'webm');
+  link.textContent = 'Download recording';
+});
+
+// Record button
+var recButton = document.querySelector('#record');
+
+recButton.onclick = function () {
+  if (record.isRecording()) {
+    record.stopRecording();
+    recButton.textContent = 'Record';
+    return;
+  }
+
+  recButton.disabled = true;
+
+  record.startRecording().then(function () {
+    recButton.textContent = 'Stop';
+    recButton.disabled = false;
+  });
+};
+
+        </script>
     <?php
     if ($viewmode) {
         $body_javascript = '';
@@ -765,6 +831,33 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
             </div>
         </form>
     </div><!--End of container div-->
+
+    <!-- Reording Container -->
+    <div id="aign-voice-recorder">
+    <fieldset>
+                        <div class="container">
+                            <h1>VOICE RECORDING</h1>
+                            <!-- <audio id="recorder" muted hidden></audio> -->
+                            <div>
+                                <input type="button" onclick="#" value="Record" id="start" />
+                                <input type="button" onclick="#" id="stop" value="Stop Recording" />
+                            </div>
+                            <!-- <span>Saved Recording</span>
+                            <audio id="player" controls></audio> -->
+                            <div id = "transcribedText"></div>
+
+
+
+  <button id="record">Record</button>
+
+<div id="mic" style="border: 1px solid #ddd; border-radius: 4px; margin-top: 1rem"></div>
+
+<div id="recordings" style="margin: 1rem 0"></div>
+
+                        </div>
+    </fieldset>
+    </div>
+
     <?php $oemr_ui->oeBelowContainerDiv(); ?>
 
 <script src="./main.js">
