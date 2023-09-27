@@ -672,20 +672,6 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
             <div class="form-row">
                 <div class="col-sm">
                     <fieldset>
-                        <div class="container">
-                            <h1>VOICE RECORDING</h1>
-                            <span>Recorder</span>
-                            <!-- <audio id="recorder" muted hidden></audio> -->
-                            <div>
-                                <input type="button" onclick="#" value="Record" id="start" />
-                                <input type="button" onclick="#" id="stop" value="Stop Recording" />
-                            </div>
-                            <!-- <span>Saved Recording</span>
-                            <audio id="player" controls></audio> -->
-                            <div id = "transcribedText"></div>
-                        </div>
-                    </fieldset>
-                    <fieldset>
                         <legend><?php echo xlt('Reason for Visit') ?></legend>
                         <div class="form-row mx-3 h-100">
                             <textarea name="reason" id="reason" class="form-control" cols="80" rows="4"><?php echo $viewmode ? text($result['reason']) : text($GLOBALS['default_chief_complaint']); ?></textarea>
@@ -765,6 +751,24 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
             </div>
         </form>
     </div><!--End of container div-->
+
+    <!-- Reording Container -->
+    <div id="aign-voice-recorder">
+    <fieldset>
+                        <div class="container">
+                            <h1>VOICE RECORDING</h1>
+                            <!-- <audio id="recorder" muted hidden></audio> -->
+                            <div>
+                                <input type="button" onclick="#" value="Record" id="start" />
+                                <input type="button" onclick="#" id="stop" value="Stop Recording" />
+                            </div>
+                            <!-- <span>Saved Recording</span>
+                            <audio id="player" controls></audio> -->
+                            <div id = "transcribedText"></div>
+                        </div>
+    </fieldset>
+    </div>
+    
     <?php $oemr_ui->oeBelowContainerDiv(); ?>
 
 <script src="./main.js">
