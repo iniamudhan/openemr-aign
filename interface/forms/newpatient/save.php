@@ -224,7 +224,7 @@ if ($mode == 'new') {
             encounter_type_description = ?,
             in_collection = ?,
             ai_sumary = ?,
-            ai_diagnosis = ?,
+            ai_diagnosis = ?
             WHERE id = ?",
         $sqlBindArray
     );
