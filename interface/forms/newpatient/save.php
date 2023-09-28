@@ -67,6 +67,11 @@ $in_collection = $_POST['in_collection'] ?? null;
 $parent_enc_id = $_POST['parent_enc_id'] ?? null;
 $encounter_provider = $_POST['provider_id'] ?? null;
 $referring_provider_id = $_POST['referring_provider_id'] ?? null;
+
+//AI Fields
+$ai_summary = $_POST['ai_summary'] ?? null;
+$ai_diagnosis = $_POST['ai_diagnosis'] ?? null;
+
 //save therapy group if exist in external_id column
 $external_id = isset($_POST['form_gid']) ? $_POST['form_gid'] : '';
 
@@ -128,7 +133,9 @@ if ($mode == 'new') {
                 referring_provider_id = ?,
                 encounter_type_code = ?,
                 encounter_type_description = ?,
-                in_collection = ?",
+                in_collection = ?
+                ai_summary = ?
+                ai_diagnosis = ?",
             [
                 $date,
                 $onset_date,
@@ -150,7 +157,9 @@ if ($mode == 'new') {
                 $referring_provider_id,
                 $encounter_type_code,
                 $encounter_type_description,
-                $in_collection
+                $in_collection,
+                $ai_summary,
+                $ai_diagnosis
             ]
         ),
         "newpatient",
@@ -191,6 +200,8 @@ if ($mode == 'new') {
         $encounter_type_code,
         $encounter_type_description,
         $in_collection,
+        $ai_summary,
+        $ai_diagnosis,
         $id
     );
     sqlStatement(
@@ -212,6 +223,8 @@ if ($mode == 'new') {
             encounter_type_code = ?,
             encounter_type_description = ?,
             in_collection = ?
+            ai_sumary = ?,
+            ai_diagnosis = ?,
             WHERE id = ?",
         $sqlBindArray
     );
