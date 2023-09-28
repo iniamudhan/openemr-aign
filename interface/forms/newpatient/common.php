@@ -174,13 +174,13 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
 
     <?php include_once("{$GLOBALS['srcdir']}/ajax/facility_ajax_jav.inc.php"); ?>
     <script>
-        const mypcc = '' + <? php echo js_escape($GLOBALS['phone_country_code']); ?>;
+        const mypcc = '' + <?php echo js_escape($GLOBALS['phone_country_code']); ?>;
 
         // Process click on issue title.
         function newissue() {
             dlgopen('../../patient_file/summary/add_edit_issue.php', '_blank', 700, 535, '', '', {
                 buttons: [
-                    { text: <? php echo xlj('Close'); ?>, close: true, style: 'default btn-sm'}
+                    { text: <?php echo xlj('Close'); ?>, close: true, style: 'default btn-sm'}
                 ]
             });
         return false;
@@ -192,7 +192,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
             s.options[s.options.length] = new Option(title, issue, true, true);
         }
 
-        <? php
+        <?php
         //Gets validation rules from Page Validation list.
         //Note that for technical reasons, we are bypassing the standard validateUsingPageRules() call.
         $collectthis = collectValidationPageRules("/interface/forms/newpatient/common.php");
@@ -202,7 +202,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
             $collectthis = json_sanitize($collectthis["new_encounter"]["rules"]);
         }
         ?>
-            let collectvalidation = <? php echo $collectthis; ?>;
+            let collectvalidation = <?php echo $collectthis; ?>;
         $(function () {
             window.saveClicked = function (event) {
                 const submit = submitme(1, event, 'new-encounter-form', collectvalidation);
@@ -225,15 +225,14 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
             });
 
             $('.datepicker').datetimepicker({
-                <? php $datetimepicker_timepicker = true; ?>
-                <? php $datetimepicker_showseconds = false; ?>
-                <? php $datetimepicker_formatInput = true; ?>
-                <? php require($GLOBALS['srcdir']. '/js/xl/jquery-datetimepicker-2-5-4.js.php'); ?>
-                <? php // can add any additional javascript settings to datetimepicker here; need to prepend first setting with a comma ?>
+                <?php $datetimepicker_timepicker = true; ?>
+                <?php $datetimepicker_showseconds = false; ?>
+                <?php $datetimepicker_formatInput = true; ?>
+                <?php require($GLOBALS['srcdir']. '/js/xl/jquery-datetimepicker-2-5-4.js.php'); ?>
             });
         });
 
-        const isPosEnabled = "" + <? php echo js_escape($GLOBALS['set_pos_code_encounter']); ?>;
+        const isPosEnabled = "" + <?php echo js_escape($GLOBALS['set_pos_code_encounter']); ?>;
 
         function getPOS() {
             if (!isPosEnabled) {
@@ -246,7 +245,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                 data: {
                     mode: "get_pos",
                     facility_id: facility,
-                    csrf_token_form: <? php echo js_escape(CsrfUtils:: collectCsrfToken()); ?>
+                    csrf_token_form: <?php echo js_escape(CsrfUtils:: collectCsrfToken()); ?>
                 }
             }).done(function (fid) {
                         document.forms[0].pos_code.value = JSON.parse(fid);
@@ -263,7 +262,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                 data: {
                     mode: "get_user_data",
                     provider_id: provider,
-                    csrf_token_form: <? php echo js_escape(CsrfUtils:: collectCsrfToken()); ?>
+                    csrf_token_form: <?php echo js_escape(CsrfUtils:: collectCsrfToken()); ?>
                 }
             }).done(function (data) {
                         let rtn = JSON.parse(data);
@@ -971,10 +970,10 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
             getPOS();
         });
 
-    <? php
+    <?php
     if (!$viewmode) { ?>
             function duplicateVisit(enc, datestr) {
-                if (!confirm(<? php echo xlj("A visit already exists for this patient today. Click Cancel to open it, or OK to proceed with creating a new one.") ?>)) {
+                if (!confirm(<?php echo xlj("A visit already exists for this patient today. Click Cancel to open it, or OK to proceed with creating a new one.") ?>)) {
                     // User pressed the cancel button, so re-direct to today's encounter
                     top.restoreSession();
                     parent.left_nav.setEncounter(datestr, enc, window.name);
@@ -983,7 +982,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                 }
                 // otherwise just continue normally
             }
-            <? php
+            <?php
     // Search for an encounter from today
         $erow = sqlQuery("SELECT fe.encounter, fe.date ".
         "FROM form_encounter AS fe, forms AS f WHERE ".
@@ -1001,10 +1000,10 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
             }
         }
     ?>
-    <? php
+    <?php
     if ($GLOBALS['enable_group_therapy']) { ?>
             /* hide / show group name input */
-            let groupCategories = <? php echo json_encode($therapyGroupCategories); ?>;
+            let groupCategories = <?php echo json_encode($therapyGroupCategories); ?>;
             $('#pc_catid').on('change', function () {
                 if (groupCategories.indexOf($(this).val()) > -1) {
                     $('#therapy_group_name').show();
@@ -1018,7 +1017,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                 const url = '<?php echo $GLOBALS['webroot']?>/interface/main/calendar/find_group_popup.php';
                 dlgopen(url, '_blank', 500, 400, '', '', {
                     buttons: [
-                        { text: <? php echo xlj('Close'); ?>, close: true, style: 'default btn-sm'}
+                        { text: <?php echo xlj('Close'); ?>, close: true, style: 'default btn-sm'}
             ]
         });
         }
@@ -1030,17 +1029,17 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
             f.form_gid.value = gid;
         }
 
-        <? php
+        <?php
         if ($viewmode && in_array($result['pc_catid'], $therapyGroupCategories)) {?>
             $('#therapy_group_name').show();
-            <? php
+            <?php
         } ?>
-        <? php
+        <?php
     } ?>
 
             $(function () {
-                $('#sensitivity-tooltip').attr({ "title": <? php echo xlj('If set as high will restrict visibility of encounter to users belonging to certain groups (AROs). By default - Physicians and Administrators'); ?>, "data-toggle": "tooltip", "data-placement": "bottom"}).tooltip();
-        $('#onset-tooltip').attr({ "title": <? php echo xlj('Hospital date needed for successful billing of hospital encounters'); ?>, "data-toggle": "tooltip", "data-placement": "bottom"}).tooltip();
+                $('#sensitivity-tooltip').attr({ "title": <?php echo xlj('If set as high will restrict visibility of encounter to users belonging to certain groups (AROs). By default - Physicians and Administrators'); ?>, "data-toggle": "tooltip", "data-placement": "bottom"}).tooltip();
+        $('#onset-tooltip').attr({ "title": <?php echo xlj('Hospital date needed for successful billing of hospital encounters'); ?>, "data-toggle": "tooltip", "data-placement": "bottom"}).tooltip();
     });
 
     </script>
