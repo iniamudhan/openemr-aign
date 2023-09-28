@@ -547,7 +547,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                                         class="fa fa-info-circle text-primary" aria-hidden="true"></i>
                                 </label>
                                 <input type='text' class='form-control datepicker' name='form_onset_date'
-                                    id='form_onset_date' value='<?php echo $viewmode && $result[' onset_date']
+                                    id='form_onset_date' value='<?php echo $viewmode && $result['onset_date']
                                     !=='0000-00-00 00:00:00' ? attr(oeFormatDateTime($result['onset_date'])) : '' ; ?>'
                                 title='
                                 <?php echo xla('Date of onset or hospitalization'); ?>' />
