@@ -133,8 +133,8 @@ if ($mode == 'new') {
                 referring_provider_id = ?,
                 encounter_type_code = ?,
                 encounter_type_description = ?,
-                in_collection = ?
-                ai_summary = ?
+                in_collection = ?,
+                ai_summary = ?,
                 ai_diagnosis = ?",
             [
                 $date,
@@ -222,7 +222,7 @@ if ($mode == 'new') {
             referring_provider_id = ?,
             encounter_type_code = ?,
             encounter_type_description = ?,
-            in_collection = ?
+            in_collection = ?,
             ai_sumary = ?,
             ai_diagnosis = ?,
             WHERE id = ?",
