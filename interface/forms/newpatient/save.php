@@ -69,8 +69,8 @@ $encounter_provider = $_POST['provider_id'] ?? null;
 $referring_provider_id = $_POST['referring_provider_id'] ?? null;
 
 //AI Fields
-$ai_summary = $_POST['ai_summary'] ?? null;
-$ai_diagnosis = $_POST['ai_diagnosis'] ?? null;
+$ai_summary = $_POST['outputSummary'] ?? null;
+$ai_diagnosis = $_POST['outputDiagnosis'] ?? null;
 
 //save therapy group if exist in external_id column
 $external_id = isset($_POST['form_gid']) ? $_POST['form_gid'] : '';
