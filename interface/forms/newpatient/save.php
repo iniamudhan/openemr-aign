@@ -223,7 +223,7 @@ if ($mode == 'new') {
             encounter_type_code = ?,
             encounter_type_description = ?,
             in_collection = ?,
-            ai_sumary = ?,
+            ai_summary = ?,
             ai_diagnosis = ?
             WHERE id = ?",
         $sqlBindArray
