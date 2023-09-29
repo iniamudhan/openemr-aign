@@ -460,7 +460,24 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
         //user is "finished typing," do something
         function doneTyping () {
         //do something
-            console.log("test")
+            $.ajax({
+                type: "POST",
+                url: "http://54.224.124.129:5000",
+                data: JSON.stringify({"text": "sarath"}),// now data come in this function
+                contentType: "application/json; charset=utf-8",
+                crossDomain: true,
+                dataType: "json",
+                success: function (data, status, jqXHR) {
+                    console.log(data);
+                    alert("success");// write success in " "
+                },
+
+                error: function (jqXHR, status) {
+                    // error handler
+                    console.log(jqXHR);
+                    alert('fail' + status.code);
+                }
+            });
         }
     </script>
 </body>
