@@ -246,7 +246,7 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
 </style>
 <script>
     var uspfx = '<?php echo attr($uspfx); ?>';
-
+    var gtable;
     $(function () {
         // Initializing the DataTable.
         //
@@ -280,7 +280,7 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
             <?php $translationsDatatablesOverride = array('processing' => $loading); ?>
             <?php require($GLOBALS['srcdir'] . '/js/xl/datatables-net.js.php'); ?>
         });
-
+        gtable = oTable;
 
         <?php
         $checked = (!empty($GLOBALS['gbl_pt_list_new_window'])) ? 'checked' : '';
