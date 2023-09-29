@@ -374,7 +374,7 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
             <?php } ?>
             <div>
             <div class="dataTables_filter d-md-initial" style="float: right;">
-                <label>AI Search:<input type="search" class="form-control form-control-sm" placeholder="" id="ai_search" aria-controls="pt_table"></label>
+                <label>AI Search:<input type="text" class="form-control form-control-sm" placeholder="" id="ai_search" aria-controls="pt_table"></label>
             </div>
                 <div id="dynamic"><!-- TBD: id seems unused, is this div required? -->
                     <!-- Class "display" is defined in demo_table.css -->
@@ -462,20 +462,20 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
         //do something
             $.ajax({
                 type: "POST",
-                url: "http://54.224.124.129:5000",
-                data: JSON.stringify({"text": "sarath"}),// now data come in this function
-                contentType: "application/json; charset=utf-8",
+                url: "http://54.224.124.129:5000/search",
+                data: JSON.stringify({"text": $input.val(), "limit": 1}),// now data come in this function
+                contentType: "application/json;",
                 crossDomain: true,
                 dataType: "json",
                 success: function (data, status, jqXHR) {
                     console.log(data);
-                    alert("success");// write success in " "
+                    var patientIDs = map(item => item.patientId).filter((value, index, self) => self.indexOf(value) === index)
+                    $('input[type=search]').val(patientIDs[0]);
+
                 },
 
                 error: function (jqXHR, status) {
-                    // error handler
                     console.log(jqXHR);
-                    alert('fail' + status.code);
                 }
             });
         }
