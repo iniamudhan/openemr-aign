@@ -373,6 +373,7 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
                 <button id="create_patient_btn1" class="btn btn-primary btn-add" onclick="top.restoreSession();top.RTop.location = '<?php echo $web_root ?>/interface/new/new.php'"><?php echo xlt('Add New Patient'); ?></button>
             <?php } ?>
             <div>
+                <input type="text" />
                 <div id="dynamic"><!-- TBD: id seems unused, is this div required? -->
                     <!-- Class "display" is defined in demo_table.css -->
                     <div class="table-responsive">
