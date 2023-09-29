@@ -373,7 +373,7 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
                 <button id="create_patient_btn1" class="btn btn-primary btn-add" onclick="top.restoreSession();top.RTop.location = '<?php echo $web_root ?>/interface/new/new.php'"><?php echo xlt('Add New Patient'); ?></button>
             <?php } ?>
             <div>
-            <div class="dataTables_filter d-md-initial" style="float: left;">
+            <div class="dataTables_filter d-md-initial" style="float: right;">
                 <label>AI Search:<input type="search" class="form-control form-control-sm" placeholder="" id="ai_search" aria-controls="pt_table"></label>
             </div>
                 <div id="dynamic"><!-- TBD: id seems unused, is this div required? -->
