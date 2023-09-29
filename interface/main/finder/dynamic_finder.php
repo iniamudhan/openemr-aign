@@ -460,6 +460,7 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
         //user is "finished typing," do something
         function doneTyping () {
         //do something
+            
             $.ajax({
                 type: "POST",
                 url: "http://54.224.124.129:5000/search",
@@ -467,6 +468,9 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
                 contentType: "application/json;",
                 crossDomain: true,
                 dataType: "json",
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                },
                 success: function (data, status, jqXHR) {
                     console.log(data);
                     var patientIDs = map(item => item.patientId).filter((value, index, self) => self.indexOf(value) === index)
