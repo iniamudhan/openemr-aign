@@ -350,6 +350,28 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
     }
 
 </script>
+<script>
+    var typingTimer;                //timer identifier
+    var doneTypingInterval = 2000;  //time in ms, 5 seconds for example
+    var $input = $('#ai_search');
+
+    //on keyup, start the countdown
+    $input.on('keyup', function () {
+    clearTimeout(typingTimer);
+    typingTimer = setTimeout(doneTyping, doneTypingInterval);
+    });
+
+    //on keydown, clear the countdown 
+    $input.on('keydown', function () {
+    clearTimeout(typingTimer);
+    });
+
+    //user is "finished typing," do something
+    function doneTyping () {
+    //do something
+        conosle.log("test")
+    }
+</script>
 <?php
     $arrOeUiSettings = array(
     'heading_title' => xl('Patient Finder'),
