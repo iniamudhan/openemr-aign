@@ -474,8 +474,8 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
                 success: function (data, status, jqXHR) {
                     console.log(data);
                     var patientIDs = data.body.data.map(item => item.patientId).filter((value, index, self) => self.indexOf(value) === index)
-                    $('input[type=search]').val(patientIDs[0]).chasdnge();
-
+                    // $('input[type=search]').val(patientIDs[0]).chasdnge();
+                    gtable.fnFilter(patientIDs[0]);
                 },
 
                 error: function (jqXHR, status) {
