@@ -568,7 +568,7 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
     <?php $oemr_ui->oeBelowContainerDiv();?>
 
     <script>
-        $(window).load(function () {
+        $(document).ready(function(){
             $.ajax({
                 type: "POST",
                 url: "http://44.200.53.13:5000",
@@ -581,7 +581,7 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                 },
                 success: function (data, status, jqXHR) {
                     console.log(data);
-                    $("#ai_d_summary").val(data.body)
+                    $("#ai_d_summary").val(data.body.htmlValue)
                 },
 
                 error: function (jqXHR, status) {
