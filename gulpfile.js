@@ -632,6 +632,8 @@ function sync() {
 
 // Export watch task
 exports.watch = watch;
+exports.aign = styles_style_aign_compact;
+    
 
 // Export pertinent default task
 // - Note that the default task runs if no other task is chosen,
