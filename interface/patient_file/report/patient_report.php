@@ -108,7 +108,7 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                 <div class="col-sm-12">
                     <span class='title oe-report-section-header'>AI - Discharge Summary</span>
                         <code id="ai_d_summary">
-
+                            Generating ...
                         </code>
                 </div>
             </fieldset>
