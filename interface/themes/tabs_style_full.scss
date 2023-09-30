@@ -180,6 +180,7 @@ body {
 
 .patientPicture img {
   height: 75px;
+  border-radius: 100% !important;
 }
 
 .patientCurrentEncounter {
@@ -444,7 +445,7 @@ div.menuLabel:hover {
 
 #patient_caret {
   font-size: 1.5rem;
-  margin-top: -5px;
+  // margin-top: -5px;
 }
 
 @media (max-width: 768px) {

@@ -36,7 +36,7 @@ use OpenEMR\Core\Header;
     </head>
 
     <body>
-        <div class="navbar navbar-light bg-light sticky-top">
+        <div class="navbar bg-light sticky-top">
             <div class="container">
                       <a class="navbar-brand" href="./"><?php echo xlt('Home'); ?></a>
                         <a class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse"><span class="navbar-toggler-icon"></span></a>

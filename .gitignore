@@ -8,7 +8,7 @@
 node_modules
 /vendor/*
 /public/assets/*
-# /public/themes/*
+/public/themes/*
 !/public/assets/modified
 /.docs/.out/*
 
