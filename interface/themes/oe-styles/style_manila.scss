@@ -4,8 +4,8 @@
 
 /* Manilla Theme-Specific Colors */
 $manilla-gray: #c0c0c0;
-
-//$font-family-sans-serif: "source_sans_pro", "FontAwesome", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+//$font-family-sans-serif:'Poppins', "source_sans_pro", "FontAwesome", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 $close-color: $black;
 $close-text-shadow: 0 1 0 $black;
 
