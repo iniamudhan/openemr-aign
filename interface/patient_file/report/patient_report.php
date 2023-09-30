@@ -565,25 +565,27 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
 
     <script>
         $(document).ready(function(){
-            $.ajax({
-                type: "POST",
-                url: "http://44.200.53.13:5000",
-                data: JSON.stringify({"patientId": "<?php $pid; ?>"}),// now data come in this function
-                contentType: "application/json;",
-                crossDomain: true,
-                dataType: "json",
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                },
-                success: function (data, status, jqXHR) {
-                    console.log(data);
-                    $("#ai_d_summary").html(data.body.htmlValue)
-                },
+            $('iframe').load(function() { 
+                $.ajax({
+                    type: "POST",
+                    url: "http://44.200.53.13:5000",
+                    data: JSON.stringify({"patientId": "<?php $pid; ?>"}),// now data come in this function
+                    contentType: "application/json;",
+                    crossDomain: true,
+                    dataType: "json",
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                    },
+                    success: function (data, status, jqXHR) {
+                        console.log(data);
+                        $("#ai_d_summary").html(data.body.htmlValue)
+                    },
 
-                error: function (jqXHR, status) {
-                    console.log(jqXHR);
-                }
-            });
+                    error: function (jqXHR, status) {
+                        console.log(jqXHR);
+                    }
+                });
+            }
         });
     </script>
 <script>
