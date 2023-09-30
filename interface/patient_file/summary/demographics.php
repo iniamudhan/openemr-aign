@@ -903,8 +903,9 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
     <style>
         /* Bad practice to override here, will get moved to base style theme */
         .card {
-            box-shadow: 1px 1px 1px hsl(0 0% 0% / .2);
-            border-radius: 0;
+            /* box-shadow: 1px 1px 1px hsl(0 0% 0% / .2); */
+            border-radius: 8px !important;
+            padding: 1em;
         }
 
         <?php
