@@ -863,9 +863,10 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
     </div><!--End of container div-->
 
     <!-- Reording Container -->
+    <div id="recorder">
     <div id="transcribedText"></div>
-        <div id="outputSummary"></div>
-        <div id="outputDiagnosis"></div>
+        <!-- <div id="outputSummary"></div> -->
+        <!-- <div id="outputDiagnosis"></div> -->
     <div id="aign-voice-recorder">
         <div id="player">
             <div id="player-controls">
@@ -885,6 +886,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
         </div>
         </div>
     </div>
+                </div>
   
     </div>
     <?php $oemr_ui->oeBelowContainerDiv(); ?>

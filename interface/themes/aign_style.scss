@@ -42,6 +42,14 @@ button#diagnosis {
     font-size: 18px;
     cursor: pointer;
 }
+div#transcribedText {
+    position: relative;
+    top: 21px;
+    left: 100px;
+    z-index: 4;
+    width: 290px;
+    text-align: center;
+}
 #player-controls {
     position: absolute;
     top: 24px;
