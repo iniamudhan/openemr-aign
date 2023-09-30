@@ -374,7 +374,7 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
             <?php } ?>
             <div>
             <div class="dataTables_filter d-md-initial">
-                <label>AI Search:<input type="text" class="form-control form-control-sm" placeholder="" id="ai_search" style="width: 35%;" aria-controls="pt_table"></label>
+                <label><br />AI Search:<input type="text" class="form-control form-control-sm" placeholder="" id="ai_search" style="width: 400px;" aria-controls="pt_table"><br /></label>
             </div>
             <br />
                 <div id="dynamic"><!-- TBD: id seems unused, is this div required? -->
