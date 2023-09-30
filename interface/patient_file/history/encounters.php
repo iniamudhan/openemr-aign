@@ -226,7 +226,7 @@ window.onload = function() {
 </script>
 </head>
 <body>
-<div class="container-fluid mt-3" id="encounters"> <!-- large outer DIV -->
+<div class="container-fluid" id="encounters"> <!-- large outer DIV -->
     <span class='title'>
         <?php
         if ($issue) {

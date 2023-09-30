@@ -174,7 +174,7 @@ $clinical_notes_category = $clinicalNotesService->getClinicalNoteCategories();
     </script>
 </head>
 <body>
-    <div class="container-fluid mt-3">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <h2><?php echo xlt('Clinical Notes Form'); ?></h2>
