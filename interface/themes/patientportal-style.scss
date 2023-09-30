@@ -861,6 +861,7 @@ body > .header {
 */
 .form-control {
   box-shadow: none;
+  font-family: 'Poppins', sans-serif;
 
   &:focus {
     border-color: $primary !important;
@@ -875,6 +876,7 @@ body > .header {
 .form-group.has-success .form-control {
   border-color: $success !important;
   box-shadow: none;
+  font-family: 'Poppins', sans-serif;
 }
 
 .form-group.has-warning label {

@@ -217,6 +217,7 @@ $(function () {
     width: auto;
     display: inline;
     height: auto;
+    font-family: 'Poppins', sans-serif;
 }
 div.tab {
     height: auto;
