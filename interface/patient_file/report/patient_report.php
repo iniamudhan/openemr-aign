@@ -568,7 +568,7 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
             $.ajax({
                 type: "POST",
                 url: "http://44.200.53.13:5000",
-                data: JSON.stringify({"patientId": "1"}),// now data come in this function
+                data: JSON.stringify({"patientId": <?php $pid; ?>}),// now data come in this function
                 contentType: "application/json;",
                 crossDomain: true,
                 dataType: "json",
