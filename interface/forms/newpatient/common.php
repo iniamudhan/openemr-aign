@@ -864,22 +864,24 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
 
     <!-- Reording Container -->
     <div id="aign-voice-recorder">
-    <div class="container">
-        <h1>VOICE RECORDING</h1>
-        <div>
+        <div id="player">
+            <div id="player-control">
             <button id="record">
                 <i class="fa fa-play"></i> 
                 <i class="fa fa-stop" style="display: none;"></i> 
             </button>
-            <div id="mic" style="border-radius: 4px; margin-top: 1rem"></div>
             <input type="button" onclick="#" id="diagnosis" value="Make Diagnosis" disabled />
+            </div>
+            <div id="waveform">
+            <div id="mic" style="border-radius: 4px; margin-top: 1rem"></div>
+            </div>
         </div>
-        <div id="transcribedText"></div>
+        </div>
+    </div>
+    <div id="transcribedText"></div>
         <div id="outputSummary"></div>
         <div id="outputDiagnosis"></div>
     </div>
-    </div>
-
     <?php $oemr_ui->oeBelowContainerDiv(); ?>
     <script src="https://unpkg.com/wavesurfer.js@7.3.2/dist/wavesurfer.min.js"></script>
     <script src="https://unpkg.com/wavesurfer.js@7.3.2/dist/plugins/record.min.js"></script>
