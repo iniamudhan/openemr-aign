@@ -863,6 +863,9 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
     </div><!--End of container div-->
 
     <!-- Reording Container -->
+    <div id="transcribedText"></div>
+        <div id="outputSummary"></div>
+        <div id="outputDiagnosis"></div>
     <div id="aign-voice-recorder">
         <div id="player">
             <div id="player-controls">
@@ -872,17 +875,17 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
             </button>
             </div>
             <div id="waveform">
-            <div id="mic" style="border-radius: 4px; margin-top: 1rem"></div>
+            <div id="mic" style="border-radius: 4px;"></div>
             </div>
             <div id="make-diag">
-            <input type="button" onclick="#" id="diagnosis" value="Make Diagnosis" disabled />
+            <button id="diagnosis" onclick="#"  disabled>
+                <i class="fa fa-user-md"></i> 
+            </button>
                 </div>
         </div>
         </div>
     </div>
-    <div id="transcribedText"></div>
-        <div id="outputSummary"></div>
-        <div id="outputDiagnosis"></div>
+  
     </div>
     <?php $oemr_ui->oeBelowContainerDiv(); ?>
     <script src="https://unpkg.com/wavesurfer.js@7.3.2/dist/wavesurfer.min.js"></script>

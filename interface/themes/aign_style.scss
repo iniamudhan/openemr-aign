@@ -11,17 +11,36 @@
 }
 #record {
     font-size: 24px;
-    padding: 10px;
+    /* padding: 10px; */
+    color: #FFF;
+    text-align: center;
+    width: 115px;
+    height: 115px;
+    border: 0;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+}
+div#waveform {
+    margin-left: 160px;
+    max-height: 70px;
 }
 
-#player-controls{
+div#make-diag {
     position: absolute;
-    top: -40px;
+    right: -60px;
+    bottom: 15px;
+}
+#player-controls {
+    position: absolute;
+    top: -15px;
     width: 115px;
     height: 115px;
     margin-left: 40px;
+    -webkit-transform: rotateZ(0);
+    -ms-transform: rotate(0);
     transform: rotateZ(0);
-    transition: 0.3s ease all;
+    -webkit-transition: .3s ease all;
+    transition: .3s ease all;
     box-shadow: 0 0 0 10px #fff;
     border-radius: 50%;
     overflow: hidden;
@@ -103,4 +122,8 @@
 
 .container-fluid{
     margin-top: 0 !important;
+}
+
+.menuLabel:hover {
+    cursor: pointer;
 }
