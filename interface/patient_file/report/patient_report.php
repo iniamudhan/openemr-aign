@@ -581,7 +581,7 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                 },
                 success: function (data, status, jqXHR) {
                     console.log(data);
-                    $("#ai_d_summary").val(data.body.htmlValue)
+                    $("#ai_d_summary").html(data.body.htmlValue)
                 },
 
                 error: function (jqXHR, status) {
