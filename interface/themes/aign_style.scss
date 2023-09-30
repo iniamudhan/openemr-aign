@@ -1,0 +1,77 @@
+#aign-voice-recorder {
+    position: absolute;
+    bottom: 1em;
+    left: 0.7em;
+    border: 1px solid #d9e1ec;
+    border-radius: 1em;
+    background: linear-gradient(89.84deg,rgba(230,36,174,.15) .34%,rgba(94,58,255,.15) 16.96%,rgba(10,136,255,.15) 34.66%,rgba(75,191,80,.15) 50.12%,rgba(137,206,0,.15) 66.22%,rgba(239,183,0,.15) 82%,rgba(246,73,0,.15) 99.9%);
+    padding: 2em;
+    max-width: 350px;
+    max-height: 550px;
+    overflow: scroll;
+}
+#record {
+    font-size: 24px;
+    padding: 10px;
+}
+
+
+.center {
+    text-align: center;
+}
+
+.record-btn {
+    font-size: 24px;
+    padding: 10px 20px;
+    background-color: #ff3366;
+    border: none;
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.record-btn:hover {
+    background-color: #ff0044;
+    transform: scale(1.05);
+}
+
+.waveform {
+    border: 2px solid #ff3366;
+    border-radius: 10px;
+    margin-top: 1rem;
+    padding: 10px;
+}
+
+.diagnosis-btn {
+    font-size: 18px;
+    background-color: #ff3366;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.diagnosis-btn:hover {
+    background-color: #ff0044;
+}
+
+.output-box {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.output-box h2 {
+    color: #ff3366;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.output-box p {
+    font-size: 16px;
+}
