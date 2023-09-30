@@ -6,35 +6,47 @@
     border-radius: 15px;
     z-index: 2;
     max-width: 350px;
-    bottom: 1em;
-    left: 1em;
+    bottom: 2em;
+    left: 5em;
 }
 #record {
     font-size: 24px;
-    /* padding: 10px; */
-    color: #FFF;
+    color: #fff;
     text-align: center;
-    width: 115px;
-    height: 115px;
+    width: 80px;
+    height: 80px;
     border: 0;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    background: #020024;
+    background: -webkit-linear-gradient(left,#020024 0,#090979 35%,#00d4ff 100%);
+    background: linear-gradient(90deg,#020024 0,#090979 35%,#00d4ff 100%);
 }
 div#waveform {
-    margin-left: 160px;
-    max-height: 70px;
+    margin-left: 0;
+    max-height: 130px;
 }
 
 div#make-diag {
     position: absolute;
-    right: -60px;
-    bottom: 15px;
+    right: -30px;
+    bottom: 44px;
+    z-index: 2;
+}
+button#diagnosis {
+    border: 0;
+    background: #607D8B;
+    background: linear-gradient(circle, #9E9E9E 0%, #607D8B 100%);
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    color: #FFFF;
+    font-size: 18px;
+    cursor: pointer;
 }
 #player-controls {
     position: absolute;
-    top: -15px;
-    width: 115px;
-    height: 115px;
+    top: 24px;
+    width: 80px;
+    height: 80px;
     margin-left: 40px;
     -webkit-transform: rotateZ(0);
     -ms-transform: rotate(0);
@@ -44,6 +56,9 @@ div#make-diag {
     box-shadow: 0 0 0 10px #fff;
     border-radius: 50%;
     overflow: hidden;
+    left: -78px;
+    z-index: 20;
+    box-shadow: 0 1rem 2rem hsl(0 0% 0% / 20%);
 }
 
 
