@@ -870,11 +870,13 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                 <i class="fa fa-play"></i> 
                 <i class="fa fa-stop" style="display: none;"></i> 
             </button>
-            <input type="button" onclick="#" id="diagnosis" value="Make Diagnosis" disabled />
             </div>
             <div id="waveform">
             <div id="mic" style="border-radius: 4px; margin-top: 1rem"></div>
             </div>
+            <div id="make-diag">
+            <input type="button" onclick="#" id="diagnosis" value="Make Diagnosis" disabled />
+                </div>
         </div>
         </div>
     </div>
