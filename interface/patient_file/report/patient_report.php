@@ -104,6 +104,19 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
             $menuPatient->displayHorizNavBarMenu();
             ?>
 
+            <fieldset>
+                <div class="col-sm-12">
+                    <span class='title oe-report-section-header'>AI - Discharge Summary</span>
+                    <br/>
+                    <br/>
+                    <pre>
+                        <code id="ai_d_summary">
+
+                        </code>
+                    </pre>
+                </div>
+            </fieldset>
+
             <?php
             if ($GLOBALS['activate_ccr_ccd_report']) { // show CCR/CCD reporting options ?>
                 <div class="mt-3" id="ccr_report">
@@ -554,6 +567,29 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
     </div><!--end of container div-->
     <?php $oemr_ui->oeBelowContainerDiv();?>
 
+    <script>
+        $(window).load(function () {
+            $.ajax({
+                type: "POST",
+                url: "http://44.200.53.13:5000",
+                data: JSON.stringify({"patientId": "1"}),// now data come in this function
+                contentType: "application/json;",
+                crossDomain: true,
+                dataType: "json",
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                },
+                success: function (data, status, jqXHR) {
+                    console.log(data);
+                    $("#ai_d_summary").val(data.body)
+                },
+
+                error: function (jqXHR, status) {
+                    console.log(jqXHR);
+                }
+            });
+        });
+    </script>
 <script>
 
 // jQuery stuff to make the page a little easier to use
