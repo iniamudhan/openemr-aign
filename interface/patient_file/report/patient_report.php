@@ -585,7 +585,7 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                         console.log(jqXHR);
                     }
                 });
-            }
+            });
         });
     </script>
 <script>
