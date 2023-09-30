@@ -746,6 +746,8 @@ ul.tabNav a {
   display: block;
   padding: 4px 4px 5px;
   text-decoration: none;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 ul.tabNav li.current a {
@@ -1567,6 +1569,8 @@ ul.tabNav li.current {
 
 ul.tabNav a {
   padding: 4px 4px 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 ul.tabNav li.current a {

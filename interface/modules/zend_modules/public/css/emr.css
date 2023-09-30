@@ -167,6 +167,8 @@ img {
 ul.tabNav li.current a {
     background: #4e84c4 !important;
     padding: 8px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 ul.tabNav a {
@@ -178,6 +180,8 @@ ul.tabNav a {
     display: block;
     padding: 4px 4px 5px 4px;
     text-decoration: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .activate {
