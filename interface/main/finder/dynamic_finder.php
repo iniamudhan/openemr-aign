@@ -73,6 +73,8 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
 <head>
     <?php Header::setupHeader(['datatables', 'datatables-colreorder', 'datatables-dt', 'datatables-bs']); ?>
     <title><?php echo xlt("Patient Finder"); ?></title>
+    <link rel="stylesheet" href="<?php echo $webroot; ?>/public/themes/aign_style.css?v=<?php echo $v_js_includes; ?>">
+
 <style>
     /* Finder Processing style */
     div.dataTables_wrapper div.dataTables_processing {
@@ -374,15 +376,13 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
             <?php } ?>
             <div>
             <div class="dataTables_filter d-md-initial">
-            <div class="col-sm">
+            <div class="ai-search-container">
                     <fieldset>
                         <legend>
                         AI Search
                         </legend>
-                        <div class="form-row mx-3 h-100">
                             <span class="powered-by-aign">Powered by AIGn</span>
                             <input type="text" class="form-control form-control-sm" placeholder="" id="ai_search" style="width: 400px;" aria-controls="pt_table" />
-                        </div>
                     </fieldset>
                 </div>
             </div>
