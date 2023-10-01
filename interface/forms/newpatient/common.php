@@ -879,7 +879,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
             <div id="mic" style="border-radius: 4px;"></div>
             </div>
             <div id="make-diag">
-            <button id="diagnosis" onclick="#"  disabled>
+            <button id="diagnosis" onclick="#" disabled>
                 <i class="fa fa-user-md"></i> 
             </button>
                 </div>
@@ -955,7 +955,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                     recordRef.disabled = false;
                 });
 
-                onRecordPress()
+                // onRecordPress()
             })
             diganosisRef.addEventListener('click', (e) => {
                 if (recordingDone) {
