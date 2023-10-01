@@ -240,11 +240,12 @@ div#encounters{
     padding-top: 20px;
 }
 
-#ccr_report fieldset, form#report_form, fieldset #ai-dischargesummary {
+#ccr_report fieldset, form#report_form, fieldset#ai-dischargesummary {
     background: #FFF !important;
     border: 1px solid #CCC;
     padding: 10px;
     border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 #ccr_report .col-sm-12 {

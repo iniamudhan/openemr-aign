@@ -210,7 +210,6 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                             </div>
                         </fieldset>
                     </form>
-                    <hr/>
                 </div>
                 <?php
             } // end CCR/CCD reporting options ?>
