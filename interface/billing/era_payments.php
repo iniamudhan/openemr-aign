@@ -196,6 +196,7 @@ if (!empty($_FILES['form_erafile']['size'])) {
     .input-group .form-control {
         margin-bottom: 3px;
         margin-left: 0px;
+        font-family: 'Poppins', sans-serif;
     }
     #form_without {
         margin-left: 5px !important;

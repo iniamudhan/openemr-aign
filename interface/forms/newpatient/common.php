@@ -863,23 +863,32 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
     </div><!--End of container div-->
 
     <!-- Reording Container -->
+    <div id="recorder">
+    <div id="transcribedText"></div>
+        <!-- <div id="outputSummary"></div> -->
+        <!-- <div id="outputDiagnosis"></div> -->
     <div id="aign-voice-recorder">
-    <div class="container">
-        <h1>VOICE RECORDING</h1>
-        <div>
+        <div id="player">
+            <div id="player-controls">
             <button id="record">
                 <i class="fa fa-play"></i> 
                 <i class="fa fa-stop" style="display: none;"></i> 
             </button>
-            <div id="mic" style="border-radius: 4px; margin-top: 1rem"></div>
-            <input type="button" onclick="#" id="diagnosis" value="Make Diagnosis" disabled />
+            </div>
+            <div id="waveform">
+            <div id="mic" style="border-radius: 4px;"></div>
+            </div>
+            <div id="make-diag">
+            <button id="diagnosis" onclick="#"  disabled>
+                <i class="fa fa-user-md"></i> 
+            </button>
+                </div>
         </div>
-        <div id="transcribedText"></div>
-        <div id="outputSummary"></div>
-        <div id="outputDiagnosis"></div>
+        </div>
     </div>
+                </div>
+  
     </div>
-
     <?php $oemr_ui->oeBelowContainerDiv(); ?>
     <script src="https://unpkg.com/wavesurfer.js@7.3.2/dist/wavesurfer.min.js"></script>
     <script src="https://unpkg.com/wavesurfer.js@7.3.2/dist/plugins/record.min.js"></script>
@@ -891,21 +900,18 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
             const diganosisRef = document.querySelector("#diagnosis")
 
             const options = {
-                "height": 150,
+                "height": 40,
                 "normalize": true,
                 "waveColor": "#e100ff",
-                "barWidth": 4,
-                "barGap": 1,
-                "barRadius": 23,
-                "barHeight": 1.6,
+                "barWidth": 1,
+                "barGap": 4,
+                "barRadius": 0,
                 "barAlign": "center",
-                "minPxPerSec": 1,
                 "fillParent": true,
                 "mediaControls": false,
                 "autoplay": false,
                 "interact": false,
                 "dragToSeek": false,
-                "hideScrollbar": false,
                 "audioRate": 1,
                 "autoScroll": true,
                 "autoCenter": true,

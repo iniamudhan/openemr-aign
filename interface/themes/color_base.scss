@@ -123,7 +123,8 @@ $fa-font-path: "../assets/@fortawesome/fontawesome-free/webfonts";
 }
 
 .body_title {
-  background-color: $dark !important;
+  // background-color: $dark !important;
+  background-color: #F5F5F5 !important;
 }
 
 .logobar {
@@ -204,8 +205,10 @@ $fa-font-path: "../assets/@fortawesome/fontawesome-free/webfonts";
 }
 
 div.tabContainer div.current {
-  background: $pale;
-  border: 1px solid $pale;
+  border: 1px solid #b5bdda;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 1em;
 }
 
 /*
@@ -226,6 +229,7 @@ div.tabContainer div.current {
 
   .form-control {
     width: auto;
+    font-family: 'Poppins', sans-serif;
   }
 }
 
