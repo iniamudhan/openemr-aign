@@ -224,6 +224,8 @@ window.onload = function() {
     $("#selPagesize").on("change", changePageSize);
 }
 </script>
+<link rel="stylesheet" href="<?php echo $webroot; ?>/public/themes/aign_style.css?v=<?php echo $v_js_includes; ?>">
+
 </head>
 <body>
 <div class="container-fluid" id="encounters"> <!-- large outer DIV -->
