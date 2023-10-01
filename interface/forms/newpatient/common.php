@@ -955,7 +955,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                     recordRef.disabled = false;
                 });
 
-                // onRecordPress()
+                onRecordPress()
             })
             diganosisRef.addEventListener('click', (e) => {
                 if (recordingDone) {
