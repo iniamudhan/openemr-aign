@@ -746,6 +746,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                             <?php echo xlt('AI Summary') ?>
                         </legend>
                         <div class="form-row mx-3 h-100">
+                            <span class="powered-by-aign">Powered by AIGn</span>
                             <textarea name="ai_summary" id="outputSummary" class="form-control" cols="80"
                                 rows="6"><?php echo $viewmode ? text($result['ai_summary']) : "" ?></textarea>
                         </div>
@@ -757,6 +758,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                             <?php echo xlt('AI Diagnosis') ?>
                         </legend>
                         <div class="form-row mx-3 h-100">
+                            <span class="powered-by-aign">Powered by AIGn</span>
                             <textarea name="ai_diagnosis" id="outputDiagnosis" class="form-control" cols="80"
                                 rows="6"><?php echo $viewmode ? text($result['ai_diagnosis']) : "" ?></textarea>
                         </div>
@@ -865,8 +867,6 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
     <!-- Reording Container -->
     <div id="recorder">
     <div id="transcribedText"></div>
-        <!-- <div id="outputSummary"></div> -->
-        <!-- <div id="outputDiagnosis"></div> -->
     <div id="aign-voice-recorder">
         <div id="player">
             <div id="player-controls">
