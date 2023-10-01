@@ -148,7 +148,7 @@ use OpenEMR\Core\Header;
                         <?php } else { ?>
                             <div class="btn-group">
                                 <?php if (empty($mfaRequired)) { ?>
-                                    <button type="submit" name="user_role" class="btn btn-outline-primary" value="api"><?php echo xlt("OpenEMR Login"); ?> <i class="fa fa-sign-in-alt"></i></button>
+                                    <button type="submit" name="user_role" class="btn btn-outline-primary" value="api"><?php echo xlt("Login"); ?> <i class="fa fa-sign-in-alt"></i></button>
                                     <?php if (!empty($patientRoleSupport)) { ?>
                                         <button type="submit" name="user_role" class="btn btn-outline-info" value="portal-api"><?php echo xlt("Patient Login"); ?> <i class="fa fa-sign-in-alt"></i></button>
                                     <?php } ?>

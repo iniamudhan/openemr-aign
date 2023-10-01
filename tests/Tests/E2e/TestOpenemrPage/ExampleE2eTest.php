@@ -35,7 +35,7 @@ class ExampleE2eTest extends PantherTestCase
         $crawler = $client->request('GET', '/interface/login/login.php?site=default');
         // TITLE
         $title = $client->getTitle();
-        $this->assertSame('OpenEMR Login', $title);
+        $this->assertSame('Login', $title);
     }
     /** @test */
     /** TEMP REMOVING THIS TEST UNTIL FIX WHY IT IS ERRATICALLY NOT PASSING IN TRAVIS
@@ -79,6 +79,6 @@ class ExampleE2eTest extends PantherTestCase
         $crawler = $client->submit($form);
         self::assertTrue($client->isFollowingRedirects());
         $title = $client->getTitle();
-        $this->assertSame('OpenEMR Login', $title);
+        $this->assertSame('Login', $title);
     }
 }

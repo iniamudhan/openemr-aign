@@ -215,3 +215,20 @@ fieldset, legend {
 fieldset{
     background-color: #FFF !important;
 }
+
+span.powered-by-aign {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background: #EEE;
+    padding: 5px 10px;
+    background: #020024;
+    background: -webkit-linear-gradient(left,#020024 0,#090979 35%,#00d4ff 100%);
+    background: linear-gradient(90deg,#554ed7 0,#6b6bd6 35%,#00d4ff 100%);
+    color: #FFF;
+    border-radius: 5px;
+}
+
+.form-row {
+    position: relative;
+}
