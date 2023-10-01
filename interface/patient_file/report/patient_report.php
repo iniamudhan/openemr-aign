@@ -107,7 +107,7 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
             <fieldset>
                 <div class="col-sm-12">
                     <span class='title oe-report-section-header'>AI - Discharge Summary</span>
-                    <button type="button" class="generateCCR btn btn-primary btn-save btn-sm" onclick="generateAIDSummary()">Generate Report</button>
+                    <button type="button" class="btn btn-primary btn-save btn-sm" onclick="generateAIDSummary()">Generate Report</button>
                 </div>
             </fieldset>
 
@@ -562,7 +562,6 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
     <?php $oemr_ui->oeBelowContainerDiv();?>
 
     <script>
-        $(document).ready(function(){
             function generateAIDSummary(){
                 $.ajax({
                     type: "POST",
@@ -586,7 +585,6 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                     }
                 });
             }
-        });
     </script>
 <script>
 
