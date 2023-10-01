@@ -194,16 +194,6 @@ div#transcribedText {
     color: var(--greyDark);
 }
 
-textarea#outputSummary::before, textarea#outputDiagnosis::before {
-    content: 'powered by aign';
-    display: block;
-    width: 15px;
-    height: 15px;
-    margin-right: 5px;
-    position: absolute;
-    z-index: 99;
-    background: black;
-}
 
 fieldset, legend {
     background-color: #dee2e6!important;
@@ -229,6 +219,19 @@ span.powered-by-aign {
     border-radius: 5px;
 }
 
+.ai-search-container span.powered-by-aign {
+    top: 15px;
+    right: 15px;
+}
+
 .form-row {
     position: relative;
+}
+.ai-search-container {
+    margin-top: 20px;
+    position: relative;
+}
+
+.ai-search-container fieldset{
+    position: relative
 }
