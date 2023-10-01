@@ -250,3 +250,13 @@ div#encounters{
 #ccr_report .col-sm-12 {
     background: #FFF;
 }
+.text {
+    font-size: .8125rem;
+    padding-right: 15px;
+}
+input[type=checkbox], input[type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+    padding-right: 10px;
+    margin-right: 7px;
+}
