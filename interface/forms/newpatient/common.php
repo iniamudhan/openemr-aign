@@ -892,7 +892,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
     <?php $oemr_ui->oeBelowContainerDiv(); ?>
     <script src="https://unpkg.com/wavesurfer.js@7.3.2/dist/wavesurfer.min.js"></script>
     <script src="https://unpkg.com/wavesurfer.js@7.3.2/dist/plugins/record.min.js"></script>
-    <script src="./main.js">
+    <script src="main.js">
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
