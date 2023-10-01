@@ -866,7 +866,9 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
 
     <!-- Reording Container -->
     <div id="recorder">
+        <div class="recorder-container">
     <div id="transcribedText"></div>
+    <div class="aign-container">
     <div id="aign-voice-recorder">
         <div id="player">
             <div id="player-controls">
@@ -885,6 +887,8 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                 </div>
         </div>
         </div>
+    </div>
+    </div>
     </div>
                 </div>
   
