@@ -273,10 +273,40 @@ input[type=checkbox], input[type=radio] {
     width: 100%;
 }
 
+div#transcribedText {
+    width: 73%;
+    left: 4em;
+    position: absolute;
+    bottom: 14em;
+}
+
 #transcribedText p {
-    --bubble-color: var(--gray100);
+    --bubble-color: #fdfdfd;
     position: relative;
-    padding: 0.625rem;
-    background-color: var(--bubble-color);
+    padding: 0.725rem;
+    background-color: #e7e7e7;
     border-radius: 0.625rem;
 }
+
+#transcribedText p::before, #transcribedText p::after {
+    content: "";
+    position: absolute;
+  }
+  #transcribedText p::before {
+    height: calc(var(--chat-tail-size) * 1.2);
+    width: calc(var(--chat-tail-size) * .85);
+    background-color: currentColor;
+    border-radius: 50% 50% 20px/10px 0;
+    top: calc((100% - (var(--chat-tail-size) / 2)) - 11px);
+    right: calc((100% + (var(--chat-tail-size) / 2) * -1) + 4px);
+    left: auto;
+  }
+  #transcribedText p::after {
+    height: calc(var(--chat-tail-size) * 1.25);
+    width: var(--chat-tail-size);
+    background-color: var(--black);
+    border-radius: 0 0 16px/14px;
+    top: calc((100% - (var(--chat-tail-size) / 2)) - 11px);
+    right: 100%;
+    left: auto;
+  }
