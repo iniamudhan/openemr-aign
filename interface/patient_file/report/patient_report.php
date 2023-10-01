@@ -107,8 +107,9 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
             <fieldset>
                 <div class="col-sm-12">
                     <span class='title oe-report-section-header'>AI - Discharge Summary</span>
+                    <button type="button" class="generateCCR btn btn-primary btn-save btn-sm" value="'Generate Report" onclick="generateAIDSummary()"></button>
+
                         <code id="ai_d_summary">
-                            Generating ...
                         </code>
                 </div>
             </fieldset>
@@ -565,25 +566,27 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
 
     <script>
         $(document).ready(function(){
-            $.ajax({
-                type: "POST",
-                url: "http://44.200.53.13:5000",
-                data: JSON.stringify({"patientId": <?php echo $pid; ?>}),// now data come in this function
-                contentType: "application/json;",
-                crossDomain: true,
-                dataType: "json",
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                },
-                success: function (data, status, jqXHR) {
-                    console.log(data);
-                    $("#ai_d_summary").html(data.body.htmlValue)
-                },
+            function generateAIDSummary(){
+                $.ajax({
+                    type: "POST",
+                    url: "http://44.200.53.13:5000",
+                    data: JSON.stringify({"patientId": <?php echo $pid; ?>}),// now data come in this function
+                    contentType: "application/json;",
+                    crossDomain: true,
+                    dataType: "json",
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                    },
+                    success: function (data, status, jqXHR) {
+                        console.log(data);
+                        $("#ai_d_summary").html(data.body.htmlValue)
+                    },
 
-                error: function (jqXHR, status) {
-                    console.log(jqXHR);
-                }
-            });
+                    error: function (jqXHR, status) {
+                        console.log(jqXHR);
+                    }
+                });
+            }
         });
     </script>
 <script>
