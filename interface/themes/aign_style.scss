@@ -239,3 +239,14 @@ div#encounters{
     width: 90%;
     padding-top: 20px;
 }
+
+#ccr_report fieldset, form#report_form, fieldset #ai-dischargesummary {
+    background: #FFF !important;
+    border: 1px solid #CCC;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#ccr_report .col-sm-12 {
+    background: #FFF;
+}

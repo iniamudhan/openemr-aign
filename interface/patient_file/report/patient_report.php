@@ -104,7 +104,7 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
             $menuPatient->displayHorizNavBarMenu();
             ?>
 
-            <fieldset>
+            <fieldset id="ai-dischargesummary">
                 <div class="col-sm-12">
                     <span class='title oe-report-section-header'>AI - Discharge Summary</span>
                     <button type="button" class="btn btn-primary btn-save btn-sm" onclick="generateAIDSummary()">Generate Report</button>
@@ -172,7 +172,6 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                                     <?php } ?>
                             </div>
                         </fieldset>
-                        <hr/>
                         <fieldset>
                             <div class="col-sm-12">
                                 <span class='title oe-report-section-header'><?php echo xlt('Continuity of Care Document (CCD)'); ?></span>&nbsp;&nbsp;
