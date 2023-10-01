@@ -107,10 +107,7 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
             <fieldset>
                 <div class="col-sm-12">
                     <span class='title oe-report-section-header'>AI - Discharge Summary</span>
-                    <button type="button" class="generateCCR btn btn-primary btn-save btn-sm" value="'Generate Report" onclick="generateAIDSummary()"></button>
-
-                        <code id="ai_d_summary">
-                        </code>
+                    <button type="button" class="generateCCR btn btn-primary btn-save btn-sm" onclick="generateAIDSummary()">Generate Report</button>
                 </div>
             </fieldset>
 
@@ -579,7 +576,9 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                     },
                     success: function (data, status, jqXHR) {
                         console.log(data);
-                        $("#ai_d_summary").html(data.body.htmlValue)
+                        // $("#ai_d_summary").html(data.body.htmlValue)
+                        var newWindow = window.open();
+                        newWindow.document.write(data.body.htmlValue);
                     },
 
                     error: function (jqXHR, status) {
