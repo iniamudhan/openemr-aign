@@ -123,11 +123,12 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                 <div class="col-sm-12">
                     <!-- <span class='title oe-report-section-header'>AI - Insight Summary</span> -->
                     <textarea class="form-control" name='ai_insight_summary_text' id="ai_insight_summary_text" rows="3"></textarea>
-                    <!-- <textarea name="ai_insight_summary_result" id="ai_insight_summary_result" class="form-control" cols="80"
-                                rows="6"></textarea> -->
+                    <textarea name="ai_insight_summary_result" id="ai_insight_summary_result" class="form-control" cols="80"
+                                rows="6"></textarea>
                 
-                                <p id="ai_insight_summary_result"></p>
+                                <!-- <p id="ai_insight_summary_result"></p> -->
                     <button type="button" class="btn btn-primary btn-save btn-sm" onclick="generateAIInsightSummary()">Generate Summary</button>
+                    <button type="button" class="btn btn-primary btn-save btn-sm">Send Email</button>
                         
                 </div>
             </fieldset>
@@ -614,8 +615,8 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                     data: JSON.stringify({"message": docInsightMsg}),
                     success: function (data, status, jqXHR) {
                         console.log(data);
-                        $("#ai_insight_summary_result").html(data.body.message)
-                        newWindow.document.write(data.body.message);
+                        $("#ai_insight_summary_result").val(data.body.message)
+                        // newWindow.document.write(data.body.message);
                     },
                     error: function (jqXHR, status) {
                         console.log(jqXHR);
