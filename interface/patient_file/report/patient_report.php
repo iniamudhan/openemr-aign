@@ -612,18 +612,11 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                     type: "POST",
                     url: "https://y2druc0yvk.execute-api.us-east-1.amazonaws.com/dev/message",
                     data: JSON.stringify({"message": docInsightMsg}),
-                    contentType: "application/json;",
-                    crossDomain: true,
-                    dataType: "json",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
                     success: function (data, status, jqXHR) {
                         console.log(data);
                         $("#ai_insight_summary_result").html(data.body.message)
                         newWindow.document.write(data.body.message);
                     },
-
                     error: function (jqXHR, status) {
                         console.log(jqXHR);
                     }
