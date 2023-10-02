@@ -194,14 +194,10 @@ $(document).ready(function() {
 
                 response.data.forEach(function(symptomData) {
                     var symptomDiv = `
-                       
-                            <div class="card-body">
                                 <h4 class="small font-weight-bold">${symptomData.symptom} <span class="float-right">${symptomData.clusterCount}</span></h4>
                                 <div class="progress mb-4">
                                     <div class="progress-bar bg-${getColor(symptomData.clusterIndex)}" role="progressbar" style="width: ${symptomData.clusterCount}%" aria-valuenow="${symptomData.clusterCount}" aria-valuemin="0" aria-valuemax="${maxAriaValueMax}"></div>
                                 </div>
-                            </div>
-                        </div>
                     `;
 
                     $('#symptoms-container').append(symptomDiv);
@@ -247,8 +243,9 @@ $(document).ready(function() {
         });
     }
 
-    fetchDataAndGenerateWordCloud();
     fetchDataAndGenerateDivs();
+    fetchDataAndGenerateWordCloud();
+
 });
 </script>
 </body>
