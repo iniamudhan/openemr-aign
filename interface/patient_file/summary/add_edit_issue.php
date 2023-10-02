@@ -387,7 +387,7 @@ function getCodeText($code)
 <head>
     <?php Header::setupHeader(['common', 'datetime-picker', 'select2']); ?>
     <title><?php echo ($issue) ? xlt('Edit Issue') : xlt('Add New Issue'); ?></title>
-
+    <link rel="stylesheet" href="/openemr/public/themes/aign_style.css?v=72">
     <style>
         div.section {
             border: 1px solid var(--primary) !important;
