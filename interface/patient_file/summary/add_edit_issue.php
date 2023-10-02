@@ -863,6 +863,18 @@ function getCodeText($code)
                             <input type='text' class="form-control" name='form_title' id='form_title' value='<?php echo attr($irow['title'] ?? '') ?>' />
                             <input type='hidden' name='form_title_id' value='<?php echo attr($irow['list_option_id'] ?? '') ?>'>
                         </div>
+                        <div class="form-group col-12">
+                            <fieldset>
+                                <legend class="aign-header">
+                                    <?php echo xlt('AI Medication Suggestion') ?>
+                                </legend>
+                                <div class="form-row">
+                                    <span class="powered-by-aign">Powered by AIGn</span>
+                                    <textarea name="ai_summary" id="outputSummary" class="form-control" cols="80"
+                                        rows="6">test</textarea>
+                                </div>
+                            </fieldset>
+                        </div>
                         <div class="form-group col-12" id='row_active_codes'>
                             <label for="form_active_codes" class="col-form-label"><?php echo xlt('Active Issue Codes'); ?>:</label>
                             <select name='form_active_codes' id='form_active_codes' class= "form-control" size='4'
