@@ -362,3 +362,13 @@ th.table-left-corner{
 th.table-right-corner{
     border-top-right-radius: 5px;
 }
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 400;
+    font-size: 14px;
+}
+table.table{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

@@ -257,12 +257,12 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                             <thead>
                                 <tr>
                                     <?php if ($canSelect) { ?>
-                                    <th scope="col">
+                                    <th class="table-left-corner" scope="col">
                                         <input type="checkbox" class="selection-check"
                                             onclick="headerSelectionChanged(this, <?php echo attr_js($focustype);?>);"/>
                                     </th>
                                     <?php } ?>
-                                    <th class="table-left-corner" scope="col"><?php echo xlt('Title'); ?></th>
+                                    <th scope="col"><?php echo xlt('Title'); ?></th>
                                     <th scope="col"><?php echo xlt('Begin'); ?></th>
                                     <th scope="col"><?php echo xlt('End'); ?></th>
                                     <th scope="col"><?php echo xlt('Coding (click for education)'); ?></th>
