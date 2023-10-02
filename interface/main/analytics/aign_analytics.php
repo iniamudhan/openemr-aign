@@ -58,10 +58,6 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
         #loader {
             display: none;
         }
-        #word-cloud {
-            width: 400px;
-            height: 400px;
-        }
     </style>
 </head>
 <body>
@@ -225,10 +221,14 @@ $(document).ready(function() {
             },
             success: function(response) {
                 $('#loader').hide();
-                var data = response.data;
-                var wordCloudData = data.map(function(word) {
-                   return { word: word, freq: Math.random() * 20 + 10 }; 
-                });
+                // var data = response.data;
+                // var wordCloudData = data.map(function(word) {
+                //    return { word: word, freq: Math.random() * 20 + 10 }; 
+                // });
+                 var wordCloudData = [
+                    { text: 'word1', size: 10 },
+                    { text: 'word2', size: 15 },
+                ];
                 WordCloud(document.getElementById('word-cloud'), {
                     list: wordCloudData,
                     minFontSize: '15px',
