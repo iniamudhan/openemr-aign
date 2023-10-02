@@ -110,21 +110,24 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                 <legend class="aign-header">
                     <?php echo xlt('AI - Discharge Summary') ?>
                 </legend>
-                <div class="col-sm-12">
+                <div class="col-sm-12" style="text-align:center">
                     <!-- <span class='title oe-report-section-header'>AI - Discharge Summary</span> -->
-                    <button type="button" class="btn btn-primary btn-save btn-sm" onclick="generateAIDSummary()">Generate Report</button>
+                    <button type="button" class="btn btn-primary btn-save btn-sm btn-aign" onclick="generateAIDSummary()">Generate Report</button>
                 </div>
             </fieldset>
 
-            <fieldset id="ai-dischargesummary">
+            <fieldset id="ai-insightsummary">
                 <legend class="aign-header">
                     <?php echo xlt('AI - Insight Summary') ?>
                 </legend>
                 <div class="col-sm-12">
                     <!-- <span class='title oe-report-section-header'>AI - Insight Summary</span> -->
                     <textarea class="form-control" name='ai_insight_summary_text' id="ai_insight_summary_text" rows="3"></textarea>
+                    <textarea name="ai_insight_summary_result" id="ai_insight_summary_result" class="form-control" cols="80"
+                                rows="6"><?php echo $viewmode ? text($result['ai_insight_summary']) : "" ?></textarea>
+                
                     <button type="button" class="btn btn-primary btn-save btn-sm" onclick="generateAIInsightSummary()">Generate Summary</button>
-                    <div id="ai_insight_summary"></div>
+                        
                 </div>
             </fieldset>
 
@@ -617,7 +620,7 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                     },
                     success: function (data, status, jqXHR) {
                         console.log(data);
-                        $("#ai_insight_summary").html(data.body.message)
+                        $("#ai_insight_summary_result").html(data.body.message)
                         newWindow.document.write(data.body.message);
                     },
 
