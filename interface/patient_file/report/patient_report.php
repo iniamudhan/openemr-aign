@@ -606,12 +606,13 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                     crossDomain: true,
                     dataType: "json",
                     headers: {
+                        "Content-Type": "application/json",
                         'Access-Control-Allow-Origin': '*',
                     },
                     success: function (data, status, jqXHR) {
                         console.log(data);
-                        $("#ai_insight_summary").html(data.body.htmlValue)
-                        newWindow.document.write(data.body.htmlValue);
+                        $("#ai_insight_summary").html(data.body.message)
+                        newWindow.document.write(data.body.message);
                     },
 
                     error: function (jqXHR, status) {
