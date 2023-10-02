@@ -53,6 +53,11 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
     ?>
     <script src="Chart.min.js"></script>
     <script src="chart-pie.js"></script>
+    <style>
+        #loader {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div id="container_div" class="<?php echo attr($oemr_ui->oeContainer()); ?> mt-3">
@@ -141,40 +146,61 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
 
             <div class="row">
 
-                        <!-- Area Chart -->
-                        <div class="col-xl-12 col-lg-12">
-                        <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Symptoms</h6>
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="small font-weight-bold">Headache <span class="float-right">20</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">Fever<span class="float-right">40</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">Ulcer<span class="float-right">60</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">Heart Attack<span class="float-right">80</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">Leg Pain<span class="float-right">50</span></h4>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div id="loader">Loading...</div>
+                        <div id="symptoms-container" class="col-xl-12 col-lg-12">
+                    
                     </div>
             
            
     </div> <!--End of Container div-->
     <?php $oemr_ui->oeBelowContainerDiv();?>
+
+<script>
+$(document).ready(function() {
+    function getColor(clusterIndex) {
+        var colors = ['danger', 'warning', 'success', 'info', 'primary'];
+        return colors[clusterIndex];
+    }
+
+    function fetchDataAndGenerateDivs() {
+        $('#loader').show();
+        $.ajax({
+            url: 'http://3.236.189.236:5000/analytics/clusters',
+            method: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                $('#loader').hide();
+
+                var maxAriaValueMax = Math.max.apply(Math, response.data.map(function(item) {
+                    return parseInt(item.clusterCount);
+                }));
+
+                response.data.forEach(function(symptomData) {
+                    var symptomDiv = `
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">${symptomData.symptom}</h6>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="small font-weight-bold">${symptomData.symptom} <span class="float-right">${symptomData.clusterCount}</span></h4>
+                                <div class="progress mb-4">
+                                    <div class="progress-bar bg-${getColor(symptomData.clusterIndex)}" role="progressbar" style="width: ${symptomData.clusterCount}%" aria-valuenow="${symptomData.clusterCount}" aria-valuemin="0" aria-valuemax="${maxAriaValueMax}"></div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    $('#symptoms-container').append(symptomDiv);
+                });
+            },
+            error: function(error) {
+                console.error('Error fetching data:', error);
+                $('#loader').hide();
+            }
+        });
+    }
+    fetchDataAndGenerateDivs();
+});
+</script>
 </body>
 </html>
