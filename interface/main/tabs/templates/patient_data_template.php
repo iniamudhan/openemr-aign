@@ -45,6 +45,16 @@ switch ($search_any_type) {
 }
 
 ?>
+<style>
+
+.close-patient {
+    font-size: 12px;
+    background: #607d8b;
+    padding: 2px 8px;
+    border-radius: 15px;
+    color: #fff !important;
+}
+    </style>
 <script type="text/html" id="patient-data-template">
     <div class="d-lg-inline-flex w-100">
         <div class="flex-fill">
