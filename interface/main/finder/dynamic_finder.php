@@ -378,7 +378,7 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
             <div class="dataTables_filter d-md-initial">
             <div class="ai-search-container">
                     <fieldset>
-                        <legend>
+                        <legend class="aign-header">
                         Semantic Search
                         </legend>
                             <span class="powered-by-aign">Powered by AIGn</span>

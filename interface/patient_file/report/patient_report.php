@@ -108,7 +108,7 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
 
             <fieldset id="ai-dischargesummary">
                 <legend class="aign-header">
-                    <?php echo xlt('AI - Discharge Summary') ?>
+                    <?php echo xlt('Discharge Summary') ?>
                 </legend>
                 <div class="col-sm-12" style="text-align:center">
                     <!-- <span class='title oe-report-section-header'>AI - Discharge Summary</span> -->
@@ -118,7 +118,7 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
 
             <fieldset id="ai-dischargesummary">
                 <legend class="aign-header">
-                    <?php echo xlt('AI - Insight Summary') ?>
+                    <?php echo xlt('Patient Friendly Message') ?>
                 </legend>
                 <div class="col-sm-12">
                     <textarea class="form-control" name='ai_insight_summary_text' id="ai_insight_summary_text" rows="3"></textarea>
