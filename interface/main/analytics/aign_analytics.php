@@ -158,7 +158,7 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
                         </div>
             <div class="col-xl-4 col-lg-4">
             <!-- <canvas id="word-cloud" class="word-cloud" width="400" height="400"></canvas> -->
-            <div id="word-cloud-container" style="width: 800px; height: 400px;"></div>
+            <div id="word-cloud-container" style="width: 400px; height: 400px;"></div>
    
         </div>
             <div id="loader">Loading...</div>
@@ -212,6 +212,15 @@ $(document).ready(function() {
         });
     }
 
+    function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
     function fetchDataAndGenerateWordCloud() {
         $('#loader').show();
         $.ajax({
@@ -230,10 +239,10 @@ $(document).ready(function() {
                 //    return { word: word, freq: Math.random() * 20 + 10 }; 
                 // });
                 var data = [
-                "This is a sentence.",
-                "Another example sentence.",
-                "Word clouds can handle longer text.",
-                ];
+  { text: "This is a sentence.", color: getRandomColor() },
+  { text: "Another example sentence.", color: getRandomColor() },
+  { text: "Word clouds can handle longer text.", color: getRandomColor() },
+];
 
                 // WordCloud(document.getElementById('word-cloud'), {
                 //     list: wordCloudData,
@@ -257,15 +266,16 @@ $(document).ready(function() {
     .append("g")
     .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
     .selectAll("text")
-    .data(words)
-    .enter().append("text")
-    .style("font-size", function(d) { return d.size + "px"; })
-    .style("fill", "blue") // Change text color as needed
-    .attr("text-anchor", "middle")
-    .attr("transform", function(d) {
-      return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-    })
-    .text(function(d) { return d.text; });
+.data(words)
+.enter().append("text")
+.style("font-size", function(d) { return d.size + "px"; })
+.style("fill", function(d) { return d.color; }) // Use the random color
+.attr("text-anchor", "middle")
+.attr("transform", function(d) {
+  return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+})
+.text(function(d) { return d.text; });
+
 }
 
 layout.start(); 
