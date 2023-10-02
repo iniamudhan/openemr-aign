@@ -1043,24 +1043,17 @@ function getCodeText($code)
     <script>
         $('#form_title').on('change', function(){
             $.ajax({
-                type: "POST",
-                url: "https://y2druc0yvk.execute-api.us-east-1.amazonaws.com/dev",
-                data: JSON.stringify({"patientId": "1", "new_medicine": $('#form_title').val()}),// now data come in this function
-                contentType: "application/json;",
-                crossDomain: true,
-                dataType: "json",
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                },
-                success: function (data, status, jqXHR) {
-                    console.log(data);
-                    $('#ai_med_sug').html(data)
-                },
-
-                error: function (jqXHR, status) {
-                    console.log(jqXHR);
-                }
-            });
+                    type: "POST",
+                    url: "https://y2druc0yvk.execute-api.us-east-1.amazonaws.com/dev",
+                    data: JSON.stringify({"patientId": "1", "new_medicine": $('#form_title').val()}),
+                    success: function (data, status, jqXHR) {
+                        console.log(data);
+                        // newWindow.document.write(data.body.message);
+                    },
+                    error: function (jqXHR, status) {
+                        console.log(jqXHR);
+                    }
+                });
         });
     </script>
 
