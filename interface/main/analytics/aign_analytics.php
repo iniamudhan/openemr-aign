@@ -158,7 +158,9 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
                             </div> 
                             <div id="symptoms-container" class="card-body"></div>
                         </div>
-            <div id="word-cloud" class="col-xl-4 col-lg-4"></div>
+            <div class="col-xl-4 col-lg-4">
+            <canvas id="word-cloud" class="word-cloud" width="400" height="400"></canvas>
+            </div>
             <div id="loader">Loading...</div>
 
 
@@ -225,7 +227,7 @@ $(document).ready(function() {
                 $('#loader').hide();
                 var data = response.data;
                 var wordCloudData = data.map(function(word) {
-                   return { text: word, size: Math.random() * 20 + 10 }; 
+                   return { word: word, freq: Math.random() * 20 + 10 }; 
                 });
                 WordCloud(document.getElementById('word-cloud'), {
                     list: wordCloudData,
