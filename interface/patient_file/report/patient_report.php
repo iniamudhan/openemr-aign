@@ -121,8 +121,10 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                     <?php echo xlt('Patient Friendly Message') ?>
                 </legend>
                 <div class="col-sm-12">
+                    <label> Doctor's Message </label>
                     <textarea class="form-control" name='ai_insight_summary_text' id="ai_insight_summary_text" rows="3"></textarea>
                     <br/>
+                    <label> Generated Message </label>
                     <textarea name="ai_insight_summary_result" id="ai_insight_summary_result" class="form-control" cols="80"
                                 rows="6"></textarea>
                     <br/>
