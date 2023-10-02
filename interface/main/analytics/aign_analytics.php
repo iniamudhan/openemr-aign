@@ -36,7 +36,8 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
     <?php Header::setupHeader(['datatables', 'datatables-colreorder', 'datatables-dt', 'datatables-bs']); ?>
     <title><?php echo xlt("Analytics"); ?></title>
     <link rel="stylesheet" href="<?php echo $webroot; ?>/public/themes/aign_style.css?v=<?php echo $v_js_includes; ?>">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2/1.0.6/wordcloud2.js"></script>
+    
 
 <?php
     $arrOeUiSettings = array(
@@ -51,11 +52,15 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
     );
     $oemr_ui = new OemrUI($arrOeUiSettings);
     ?>
-    <script src="Chart.min.js"></script>
-    <script src="chart-pie.js"></script>
+    <!-- <script src="Chart.min.js"></script> -->
+    <!-- <script src="chart-pie.js"></script> -->
     <style>
         #loader {
             display: none;
+        }
+        #word-cloud {
+            width: 400px;
+            height: 400px;
         }
     </style>
 </head>
@@ -146,10 +151,11 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
 
             <div class="row">
 
+            <div id="symptoms-container" class="col-xl-8 col-lg-8"> </div>
+            <div id="word-cloud" class="col-xl-4 col-lg-4"></div>
             <div id="loader">Loading...</div>
-                        <div id="symptoms-container" class="col-xl-12 col-lg-12">
-                    
-                    </div>
+
+
             
            
     </div> <!--End of Container div-->
@@ -199,6 +205,33 @@ $(document).ready(function() {
             }
         });
     }
+
+    function fetchDataAndGenerateWordCloud() {
+        $('#loader').show();
+        $.ajax({
+            url: 'http://3.236.189.236:5000/analytics/isolation',
+            method: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                $('#loader').hide();
+                var data = response.data;
+                WordCloud(document.getElementById('word-cloud'), {
+                    list: data,
+                    gridSize: 8,
+                    weightFactor: 5,
+                    fontFamily: 'Arial, sans-serif',
+                    color: 'random-dark',
+                    backgroundColor: '#fff'
+                });
+            },
+            error: function(error) {
+                $('#loader').hide();
+                console.error('Error fetching data:', error);
+            }
+        });
+    }
+
+    fetchDataAndGenerateWordCloud();
     fetchDataAndGenerateDivs();
 });
 </script>
