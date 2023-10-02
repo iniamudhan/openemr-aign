@@ -867,7 +867,7 @@ function getCodeText($code)
                             <?php if (($irow['type'] ?? '') == 'medication') : ?>
                                 <fieldset>
                                     <legend class="aign-header">
-                                        <?php echo xlt('AI Medication Suggestion') ?>
+                                        <?php echo xlt('AI - Drug Medication Suggestion') ?>
                                     </legend>
                                     <div class="form-row">
                                         <span class="powered-by-aign">Powered by AIGn</span>
@@ -1042,13 +1042,14 @@ function getCodeText($code)
 
     <script>
         $('#form_title').on('change', function(){
+            $('#ai_med_sug').html("Generating...");
             $.ajax({
                     type: "POST",
                     url: "https://y2druc0yvk.execute-api.us-east-1.amazonaws.com/dev/drug_medication",
                     data: JSON.stringify({"patientId": "1", "new_medicine": $('#form_title').val()}),
                     success: function (data, status, jqXHR) {
                         console.log(data);
-                        // newWindow.document.write(data.body.message);
+                        $('#ai_med_sug').html(data.body.alternate_medicine);
                     },
                     error: function (jqXHR, status) {
                         console.log(jqXHR);
