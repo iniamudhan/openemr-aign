@@ -149,17 +149,20 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
 
             <div class="row">
 
-            <div  class="col-xl-8 col-lg-8">
+            <div  class="col-xl-12 col-lg-12">
             <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">Symptoms</h6>
                             </div> 
                             <div id="symptoms-container" class="card-body"></div>
                         </div>
-            <div class="col-xl-4 col-lg-4">
-            <!-- <canvas id="word-cloud" class="word-cloud" width="400" height="400"></canvas> -->
-            <div id="word-cloud-container" style="width: 400px; height: 400px;"></div>
-   
+            <div  class="col-xl-12 col-lg-12">
+            <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Isolation</h6>
+                            </div> 
+            <div id="word-cloud-container" style="width: 800px; height: 400px;"></div>
+   <div>
         </div>
             <div id="loader">Loading...</div>
 
@@ -240,8 +243,8 @@ $(document).ready(function() {
                 });
 
                 var layout = d3.layout.cloud()
-                    .size([400, 400]) 
-                    .words(data.map(function(d) {
+                    .size([800, 400]) 
+                    .words(wordCloudData.map(function(d) {
                         return { text: d.text, size: Math.random() * 30 + 10, color: d.color }; 
                     }))
                     .padding(5)
