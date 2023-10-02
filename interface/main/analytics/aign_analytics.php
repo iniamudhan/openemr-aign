@@ -172,8 +172,9 @@ $(document).ready(function() {
         $('#loader').show();
         $.ajax({
             url: 'http://3.236.189.236:5000/analytics/clusters',
-            method: 'GET',
+            type: 'GET',
             dataType: 'json',
+            data:{},
             success: function(response) {
                 $('#loader').hide();
 
@@ -210,8 +211,9 @@ $(document).ready(function() {
         $('#loader').show();
         $.ajax({
             url: 'http://3.236.189.236:5000/analytics/isolation',
-            method: 'GET',
+            type: 'GET',
             dataType: 'json',
+            data:{},
             success: function(response) {
                 $('#loader').hide();
                 var data = response.data;
