@@ -36,7 +36,7 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
     <?php Header::setupHeader(['datatables', 'datatables-colreorder', 'datatables-dt', 'datatables-bs']); ?>
     <title><?php echo xlt("Analytics"); ?></title>
     <link rel="stylesheet" href="<?php echo $webroot; ?>/public/themes/aign_style.css?v=<?php echo $v_js_includes; ?>">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2/1.0.6/wordcloud2.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.0.1/wordcloud2.min.js"></script>
     
 
 <?php
