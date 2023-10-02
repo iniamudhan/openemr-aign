@@ -19,7 +19,7 @@
     "label": "Finder",
     "menu_id": "fin0",
     "target": "fin",
-    "url": "/interface/main/analytics/aign_analytics.php", 
+    "url": "/interface/main/finder/aign_analytics.php", 
     "children": [],
     "requirement": 0,
     "acl_req": [
@@ -31,7 +31,7 @@
     "label": "Analytics",
     "menu_id": "anal0",
     "target": "anal",
-    "url": "/interface/main/finder/aign_analytics.php",
+    "url": "/interface/main/analytics/aign_analytics.php",
     "children": [],
     "requirement": 0,
     "acl_req": [
