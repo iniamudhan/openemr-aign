@@ -36,7 +36,7 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
     <?php Header::setupHeader(['datatables', 'datatables-colreorder', 'datatables-dt', 'datatables-bs']); ?>
     <title><?php echo xlt("Analytics"); ?></title>
     <link rel="stylesheet" href="<?php echo $webroot; ?>/public/themes/aign_style.css?v=<?php echo $v_js_includes; ?>">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.0.1/wordcloud2.min.js"></script>
+    <script src="https://pulipulichen.github.io/blogger/posts/2016/11/r-text-mining/wordcloud2.js"></script>
     
 
 <?php
@@ -231,11 +231,7 @@ $(document).ready(function() {
                 });
                 WordCloud(document.getElementById('word-cloud'), {
                     list: wordCloudData,
-                    gridSize: 8,
-                    weightFactor: 5,
-                    fontFamily: 'Arial, sans-serif',
-                    color: 'random-dark',
-                    backgroundColor: '#fff'
+                    minFontSize: '15px',
                 });
             },
             error: function(error) {
