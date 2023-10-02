@@ -112,7 +112,7 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                 </legend>
                 <div class="col-sm-12" style="text-align:center">
                     <!-- <span class='title oe-report-section-header'>AI - Discharge Summary</span> -->
-                    <button type="button" class="btn btn-primary btn-save btn-sm btn-aign" onclick="generateAIDSummary()">Generate Report</button>
+                    <button type="button" class="btn btn-primary btn-save btn-sm btn-aign" id="ai_generate_ai_summary" onclick="generateAIDSummary()">Generate Report</button>
                 </div>
             </fieldset>
 
@@ -582,6 +582,7 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
 
     <script>
             function generateAIDSummary(){
+                $('#ai_generate_ai_summary').html("Generating...");
                 $.ajax({
                     type: "POST",
                     url: "http://44.200.53.13:5000",
@@ -594,12 +595,14 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                     },
                     success: function (data, status, jqXHR) {
                         console.log(data);
+                    $('#ai_generate_ai_summary').html("Generate Report");
                         // $("#ai_d_summary").html(data.body.htmlValue)
                         var newWindow = window.open();
                         newWindow.document.write(data.body.htmlValue);
                     },
 
                     error: function (jqXHR, status) {
+                    $('#ai_generate_ai_summary').html("Generate Report");
                         console.log(jqXHR);
                     }
                 });
