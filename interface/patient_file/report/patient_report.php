@@ -107,15 +107,21 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
             ?>
 
             <fieldset id="ai-dischargesummary">
+                <legend class="aign-header">
+                    <?php echo xlt('AI - Discharge Summary') ?>
+                </legend>
                 <div class="col-sm-12">
-                    <span class='title oe-report-section-header'>AI - Discharge Summary</span>
+                    <!-- <span class='title oe-report-section-header'>AI - Discharge Summary</span> -->
                     <button type="button" class="btn btn-primary btn-save btn-sm" onclick="generateAIDSummary()">Generate Report</button>
                 </div>
             </fieldset>
 
             <fieldset id="ai-dischargesummary">
+                <legend class="aign-header">
+                    <?php echo xlt('AI - Insight Summary') ?>
+                </legend>
                 <div class="col-sm-12">
-                    <span class='title oe-report-section-header'>AI - Insight Summary</span>
+                    <!-- <span class='title oe-report-section-header'>AI - Insight Summary</span> -->
                     <textarea class="form-control" name='ai_insight_summary_text' id="ai_insight_summary_text" rows="3"></textarea>
                     <button type="button" class="btn btn-primary btn-save btn-sm" onclick="generateAIInsightSummary()">Generate Summary</button>
                     <div id="ai_insight_summary"></div>

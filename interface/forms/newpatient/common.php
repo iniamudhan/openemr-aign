@@ -742,7 +742,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
             <div class="form-row">
                 <div class="col-sm">
                     <fieldset>
-                        <legend>
+                        <legend class="aign-header">
                             <?php echo xlt('AI Summary') ?>
                         </legend>
                         <div class="form-row mx-3 h-100">
@@ -754,7 +754,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                 </div>
                 <div class="col-sm">
                     <fieldset>
-                        <legend>
+                        <legend class="aign-header">
                             <?php echo xlt('AI Diagnosis') ?>
                         </legend>
                         <div class="form-row mx-3 h-100">
