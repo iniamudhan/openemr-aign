@@ -871,7 +871,7 @@ function getCodeText($code)
                                     </legend>
                                     <div class="form-row">
                                         <span class="powered-by-aign">Powered by AIGn</span>
-                                            <div name="ai_med_sug" style="max-height: 250px; overflow: auto;" id="ai_med_sug" class="form-control"></div>
+                                            <div name="ai_med_sug" style="height: 250px; overflow: auto;" id="ai_med_sug" class="form-control"></div>
                                     </div>
                                 </fieldset>
                             <?php endif; ?>
