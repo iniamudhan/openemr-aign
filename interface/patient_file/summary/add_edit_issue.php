@@ -1044,7 +1044,7 @@ function getCodeText($code)
         $('#form_title').on('change', function(){
             $.ajax({
                     type: "POST",
-                    url: "https://y2druc0yvk.execute-api.us-east-1.amazonaws.com/dev",
+                    url: "https://y2druc0yvk.execute-api.us-east-1.amazonaws.com/dev/drug_medication",
                     data: JSON.stringify({"patientId": "1", "new_medicine": $('#form_title').val()}),
                     success: function (data, status, jqXHR) {
                         console.log(data);
