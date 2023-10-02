@@ -191,7 +191,8 @@ input#ai_search {
 input#ai_search,
 textarea#outputDiagnosis,
 textarea#outputSummary,
-textarea#ai_insight_summary_text {
+textarea#ai_insight_summary_text,
+textarea#ai_insight_summary_result {
     width: 100%;
     padding: 10px !important;
     border: 0;
