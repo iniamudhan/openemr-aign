@@ -66,7 +66,6 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
     <div id="container_div" class="<?php echo attr($oemr_ui->oeContainer()); ?> mt-3">
          <div class="container-fluid w-100">
             <?php echo $oemr_ui->pageHeading() . "\r\n"; ?>
-
             <div class="row">
 
 <div class="col-xl-3 col-md-6 mb-4">
@@ -147,7 +146,6 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
     </div>
 </div>
 </div>
-
 <div class="row">
 <div class="col-xl-12 col-lg-12">
     <div class="card shadow mb-4">
@@ -156,18 +154,20 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
         </div>
         <div id="symptoms-container" class="card-body"></div>
     </div>
-    <div class="col-xl-12 col-lg-12">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Isolation</h6>
-            </div>
-            <div id="word-cloud-container" style="width: 800px; height: 400px;"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-xl-12 col-lg-12">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Isolation</h6>
         </div>
+        <div id="word-cloud-container" style="width: 800px; height: 400px;"></div>
     </div>
 </div>
 </div>
 <div id="loader">Loading...</div>
-
+</div>
 <!--End of Container div-->
     <?php $oemr_ui->oeBelowContainerDiv();?>
 
