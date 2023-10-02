@@ -379,10 +379,10 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
             <div class="ai-search-container">
                     <fieldset>
                         <legend>
-                        AI Search
+                        Semantic Search
                         </legend>
                             <span class="powered-by-aign">Powered by AIGn</span>
-                            <input type="text" class="form-control form-control-sm" placeholder="" id="ai_search" aria-controls="pt_table" />
+                            <input type="text" class="form-control form-control-sm" placeholder="Eg., Patient admitted with knee pain" id="ai_search" aria-controls="pt_table" />
                     </fieldset>
                 </div>
             </div>
