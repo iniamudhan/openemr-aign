@@ -37,7 +37,9 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
     <title><?php echo xlt("Analytics"); ?></title>
     <link rel="stylesheet" href="<?php echo $webroot; ?>/public/themes/aign_style.css?v=<?php echo $v_js_includes; ?>">
     <script src="https://pulipulichen.github.io/blogger/posts/2016/11/r-text-mining/wordcloud2.js"></script>
-    
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.7/d3.layout.cloud.js"></script>
+
 
 <?php
     $arrOeUiSettings = array(
@@ -155,8 +157,10 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
                             <div id="symptoms-container" class="card-body"></div>
                         </div>
             <div class="col-xl-4 col-lg-4">
-            <canvas id="word-cloud" class="word-cloud" width="400" height="400"></canvas>
-            </div>
+            <!-- <canvas id="word-cloud" class="word-cloud" width="400" height="400"></canvas> -->
+            <div id="word-cloud-container" style="width: 800px; height: 400px;"></div>
+   
+        </div>
             <div id="loader">Loading...</div>
 
 
@@ -225,14 +229,47 @@ $(document).ready(function() {
                 // var wordCloudData = data.map(function(word) {
                 //    return { word: word, freq: Math.random() * 20 + 10 }; 
                 // });
-                 var wordCloudData = [
-                    { text: 'word1', size: 10 },
-                    { text: 'word2', size: 15 },
+                var data = [
+                "This is a sentence.",
+                "Another example sentence.",
+                "Word clouds can handle longer text.",
                 ];
-                WordCloud(document.getElementById('word-cloud'), {
-                    list: wordCloudData,
-                    minFontSize: '15px',
-                });
+
+                // WordCloud(document.getElementById('word-cloud'), {
+                //     list: wordCloudData,
+                //     minFontSize: '15px',
+                // });
+                var layout = d3.layout.cloud()
+  .size([800, 400]) // Set the size of the word cloud container
+  .words(data.map(function(d) {
+    return { text: d, size: Math.random() * 30 + 10 }; // Random size (adjust as needed)
+  }))
+  .padding(5)
+  .rotate(function() { return (Math.random() - 0.5) * 30; }) // Random rotation
+  .font("Arial")
+  .fontSize(function(d) { return d.size; })
+  .on("end", draw);
+
+  function draw(words) {
+  d3.select("#word-cloud-container").append("svg")
+    .attr("width", layout.size()[0])
+    .attr("height", layout.size()[1])
+    .append("g")
+    .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+    .selectAll("text")
+    .data(words)
+    .enter().append("text")
+    .style("font-size", function(d) { return d.size + "px"; })
+    .style("fill", "blue") // Change text color as needed
+    .attr("text-anchor", "middle")
+    .attr("transform", function(d) {
+      return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+    })
+    .text(function(d) { return d.text; });
+}
+
+layout.start(); 
+
             },
             error: function(error) {
                 $('#loader').hide();
