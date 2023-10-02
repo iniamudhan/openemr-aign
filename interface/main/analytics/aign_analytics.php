@@ -234,51 +234,42 @@ $(document).ready(function() {
             },
             success: function(response) {
                 $('#loader').hide();
-                // var data = response.data;
-                // var wordCloudData = data.map(function(word) {
-                //    return { word: word, freq: Math.random() * 20 + 10 }; 
-                // });
-                var data = [
-  { text: "This is a sentence.", color: getRandomColor() },
-  { text: "Another example sentence.", color: getRandomColor() },
-  { text: "Word clouds can handle longer text.", color: getRandomColor() },
-];
+                var data = response.data;
+                var wordCloudData = data.map(function(word) {
+                   return { text: word, color: getRandomColor() }; 
+                });
 
-                // WordCloud(document.getElementById('word-cloud'), {
-                //     list: wordCloudData,
-                //     minFontSize: '15px',
-                // });
                 var layout = d3.layout.cloud()
-  .size([800, 400]) // Set the size of the word cloud container
-  .words(data.map(function(d) {
-    return { text: d, size: Math.random() * 30 + 10 }; // Random size (adjust as needed)
-  }))
-  .padding(5)
-  .rotate(function() { return (Math.random() - 0.5) * 30; }) // Random rotation
-  .font("Arial")
-  .fontSize(function(d) { return d.size; })
-  .on("end", draw);
+                    .size([400, 400]) 
+                    .words(data.map(function(d) {
+                        return { text: d.text, size: Math.random() * 30 + 10, color: d.color }; 
+                    }))
+                    .padding(5)
+                    .rotate(function() { return (Math.random() - 0.5) * 30; }) 
+                    .font("Arial")
+                    .fontSize(function(d) { return d.size; })
+                    .on("end", draw);
 
-  function draw(words) {
-  d3.select("#word-cloud-container").append("svg")
-    .attr("width", layout.size()[0])
-    .attr("height", layout.size()[1])
-    .append("g")
-    .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
-    .selectAll("text")
-.data(words)
-.enter().append("text")
-.style("font-size", function(d) { return d.size + "px"; })
-.style("fill", function(d) { return d.color; }) // Use the random color
-.attr("text-anchor", "middle")
-.attr("transform", function(d) {
-  return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-})
-.text(function(d) { return d.text; });
+            function draw(words) {
+                d3.select("#word-cloud-container").append("svg")
+                    .attr("width", layout.size()[0])
+                    .attr("height", layout.size()[1])
+                    .append("g")
+                    .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+                    .selectAll("text")
+                .data(words)
+                .enter().append("text")
+                .style("font-size", function(d) { return d.size + "px"; })
+                .style("fill", function(d) { return d.color; }) 
+                .attr("text-anchor", "middle")
+                .attr("transform", function(d) {
+                return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                })
+                .text(function(d) { return d.text; });
 
-}
+            }   
 
-layout.start(); 
+                layout.start(); 
 
             },
             error: function(error) {
