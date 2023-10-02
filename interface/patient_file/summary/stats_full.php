@@ -57,6 +57,7 @@ $language = $tmp['language'];
     <?php Header::setupHeader(); ?>
 
 <title><?php echo xlt('Patient Issues'); ?></title>
+<link rel="stylesheet" href="<?php echo $webroot; ?>/public/themes/aign_style.css?v=<?php echo $v_js_includes; ?>">
 
 <script>
 
@@ -261,7 +262,7 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                                             onclick="headerSelectionChanged(this, <?php echo attr_js($focustype);?>);"/>
                                     </th>
                                     <?php } ?>
-                                    <th scope="col"><?php echo xlt('Title'); ?></th>
+                                    <th class="table-left-corner" scope="col"><?php echo xlt('Title'); ?></th>
                                     <th scope="col"><?php echo xlt('Begin'); ?></th>
                                     <th scope="col"><?php echo xlt('End'); ?></th>
                                     <th scope="col"><?php echo xlt('Coding (click for education)'); ?></th>
@@ -276,7 +277,7 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                                     <th scope="col"><?php echo xlt('Referred By'); ?></th>
                                     <th scope="col"><?php echo xlt('Modify Date'); ?></th>
                                     <th scope="col"><?php echo xlt('Comments'); ?></th>
-                                    <th scope="col"><?php echo xlt('Enc'); ?></th>
+                                    <th class="table-right-corner"  scope="col"><?php echo xlt('Enc'); ?></th>
                                 </tr>
                             </thead>
                             <?php
