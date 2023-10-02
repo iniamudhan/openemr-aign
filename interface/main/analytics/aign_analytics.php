@@ -81,7 +81,7 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">4</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            <i class="fas fa-user fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -98,7 +98,7 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">15</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                            <i class="fas fa-users fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -124,7 +124,7 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                            <i class="fas fa-file-alt fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -141,7 +141,7 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                            <i class="fas fa-comment-dots fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
