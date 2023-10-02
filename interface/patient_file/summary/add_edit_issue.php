@@ -387,7 +387,7 @@ function getCodeText($code)
 <head>
     <?php Header::setupHeader(['common', 'datetime-picker', 'select2']); ?>
     <title><?php echo ($issue) ? xlt('Edit Issue') : xlt('Add New Issue'); ?></title>
-
+    <link rel="stylesheet" href="/openemr/public/themes/aign_style.css?v=72">
     <style>
         div.section {
             border: 1px solid var(--primary) !important;
@@ -864,16 +864,17 @@ function getCodeText($code)
                             <input type='hidden' name='form_title_id' value='<?php echo attr($irow['list_option_id'] ?? '') ?>'>
                         </div>
                         <div class="form-group col-12">
-                            <fieldset>
-                                <legend class="aign-header">
-                                    <?php echo xlt('AI Medication Suggestion') ?>
-                                </legend>
-                                <div class="form-row">
-                                    <span class="powered-by-aign">Powered by AIGn</span>
-                                    <textarea name="ai_summary" id="outputSummary" class="form-control" cols="80"
-                                        rows="6">test</textarea>
-                                </div>
-                            </fieldset>
+                            <?php if (($irow['type'] ?? '') == 'medication') : ?>
+                                <fieldset>
+                                    <legend class="aign-header">
+                                        <?php echo xlt('AI Medication Suggestion') ?>
+                                    </legend>
+                                    <div class="form-row">
+                                        <span class="powered-by-aign">Powered by AIGn</span>
+                                            <div name="ai_med_sug" id="ai_med_sug" class="form-control"></div>
+                                    </div>
+                                </fieldset>
+                            <?php endif; ?>
                         </div>
                         <div class="form-group col-12" id='row_active_codes'>
                             <label for="form_active_codes" class="col-form-label"><?php echo xlt('Active Issue Codes'); ?>:</label>
@@ -1038,6 +1039,23 @@ function getCodeText($code)
             <?php echo $tabcontents; ?>
         </div>
     </div>
+
+    <script>
+        $('#form_title').on('change', function(){
+            $.ajax({
+                    type: "POST",
+                    url: "https://y2druc0yvk.execute-api.us-east-1.amazonaws.com/dev/drug_medication",
+                    data: JSON.stringify({"patientId": "1", "new_medicine": $('#form_title').val()}),
+                    success: function (data, status, jqXHR) {
+                        console.log(data);
+                        // newWindow.document.write(data.body.message);
+                    },
+                    error: function (jqXHR, status) {
+                        console.log(jqXHR);
+                    }
+                });
+        });
+    </script>
 
     <script>
         newtype(<?php echo js_escape($type_index); ?>);
