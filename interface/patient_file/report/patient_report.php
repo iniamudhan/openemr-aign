@@ -617,7 +617,6 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                     dataType: "json",
                     headers: {
                         "Content-Type": "application/json",
-                        'Access-Control-Allow-Origin': '*',
                     },
                     success: function (data, status, jqXHR) {
                         console.log(data);
