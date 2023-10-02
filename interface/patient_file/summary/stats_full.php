@@ -70,7 +70,7 @@ function refreshIssue(issue, title) {
 function dopclick(id, category) {
     top.restoreSession();
     if (category == 0) category = '';
-    dlgopen('add_edit_issue.php?issue=' + encodeURIComponent(id) + '&thistype=' + encodeURIComponent(category), '_blank', 650, 735, '', <?php echo xlj("Add/Edit Issue"); ?>);
+    dlgopen('add_edit_issue.php?issue=' + encodeURIComponent(id) + '&thistype=' + encodeURIComponent(category), '_blank', 650, 500, '', <?php echo xlj("Add/Edit Issue"); ?>);
 }
 
 // Process click on number of encounters.

@@ -130,7 +130,7 @@ function refreshIssue(issue, title) {
 function newIssue() {
  var f = document.forms[0];
  var tmp = (keyid && f.form_key[1].checked) ? ('?enclink=' + encodeURIComponent(keyid)) : '';
- dlgopen('summary/add_edit_issue.php' + tmp, '_blank', 600, 735);
+ dlgopen('summary/add_edit_issue.php' + tmp, '_blank', 600, 625);
 }
 
 // Determine if a given problem/encounter pair is currently linked.
