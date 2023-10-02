@@ -151,7 +151,13 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
 
             <div class="row">
 
-            <div id="symptoms-container" class="col-xl-8 col-lg-8"> </div>
+            <div  class="col-xl-8 col-lg-8">
+            <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">${symptomData.symptom}</h6>
+                            </div> 
+                            <div id="symptoms-container" class="card-body"></div>
+                        </div>
             <div id="word-cloud" class="col-xl-4 col-lg-4"></div>
             <div id="loader">Loading...</div>
 
@@ -188,10 +194,7 @@ $(document).ready(function() {
 
                 response.data.forEach(function(symptomData) {
                     var symptomDiv = `
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">${symptomData.symptom}</h6>
-                            </div>
+                       
                             <div class="card-body">
                                 <h4 class="small font-weight-bold">${symptomData.symptom} <span class="float-right">${symptomData.clusterCount}</span></h4>
                                 <div class="progress mb-4">
@@ -225,8 +228,11 @@ $(document).ready(function() {
             success: function(response) {
                 $('#loader').hide();
                 var data = response.data;
+                var wordCloudData = data.map(function(word) {
+                   return { text: word, size: size: Math.random() * 20 + 10 }; 
+                });
                 WordCloud(document.getElementById('word-cloud'), {
-                    list: data,
+                    list: wordCloudData,
                     gridSize: 8,
                     weightFactor: 5,
                     fontFamily: 'Arial, sans-serif',
