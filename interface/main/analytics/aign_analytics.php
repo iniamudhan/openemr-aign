@@ -51,6 +51,8 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
     );
     $oemr_ui = new OemrUI($arrOeUiSettings);
     ?>
+    <script src="Chart.min.js"></script>
+    <script src="chart-pie.js"></script>
 </head>
 <body>
     <div id="container_div" class="<?php echo attr($oemr_ui->oeContainer()); ?> mt-3">
