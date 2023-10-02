@@ -601,7 +601,7 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                 $.ajax({
                     type: "POST",
                     url: "https://y2druc0yvk.execute-api.us-east-1.amazonaws.com/dev/message",
-                    data: JSON.stringify({"message": <?php echo  ?>}),
+                    data: JSON.stringify({"message": docInsightMsg}),
                     contentType: "application/json;",
                     crossDomain: true,
                     dataType: "json",
