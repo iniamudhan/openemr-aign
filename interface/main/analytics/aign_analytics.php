@@ -225,7 +225,7 @@ $(document).ready(function() {
                 $('#loader').hide();
                 var data = response.data;
                 var wordCloudData = data.map(function(word) {
-                   return { text: word, size: size: Math.random() * 20 + 10 }; 
+                   return { text: word, size: Math.random() * 20 + 10 }; 
                 });
                 WordCloud(document.getElementById('word-cloud'), {
                     list: wordCloudData,
