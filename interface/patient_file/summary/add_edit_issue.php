@@ -868,11 +868,10 @@ function getCodeText($code)
                                 <legend class="aign-header">
                                     <?php echo xlt('AI Medication Suggestion') ?>
                                 </legend>
-                                <div class="form-row mx-3 h-100">
+                                <div class="form-row">
                                     <span class="powered-by-aign">Powered by AIGn</span>
-                                    <div id="ai_med_suggestion">
-                                        hello
-                                    </div>
+                                    <textarea name="ai_summary" id="outputSummary" class="form-control" cols="80"
+                                        rows="6">test</textarea>
                                 </div>
                             </fieldset>
                         </div>
