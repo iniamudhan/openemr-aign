@@ -27,11 +27,11 @@ $records2 = array();
 <html>
     <head>
         <?php Header::setupHeader();?>
-        <title><?php echo xlt('External Data'); ?></title>
+        <title><?php echo xlt('Analytics'); ?></title>
         <script><?php require_once("$include_root/patient_file/erx_patient_portal_js.php"); // jQuery for popups for eRx and patient portal ?></script>
         <?php
         $arrOeUiSettings = array(
-            'heading_title' => xl('External Data'),
+            'heading_title' => xl('AIGn Analytics'),
             'include_patient_name' => true,
             'expandable' => false,
             'action' => "",//conceal, reveal, search, reset, link or back
