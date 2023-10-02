@@ -154,7 +154,7 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
             <div  class="col-xl-8 col-lg-8">
             <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">${symptomData.symptom}</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Symptoms</h6>
                             </div> 
                             <div id="symptoms-container" class="card-body"></div>
                         </div>
