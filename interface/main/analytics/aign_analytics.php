@@ -174,7 +174,11 @@ $(document).ready(function() {
             url: 'http://3.236.189.236:5000/analytics/clusters',
             type: 'GET',
             dataType: 'json',
-            data:{},
+            contentType: "application/json;",
+            crossDomain: true,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+            },
             success: function(response) {
                 $('#loader').hide();
 
@@ -213,7 +217,11 @@ $(document).ready(function() {
             url: 'http://3.236.189.236:5000/analytics/isolation',
             type: 'GET',
             dataType: 'json',
-            data:{},
+            contentType: "application/json;",
+            crossDomain: true,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+            },
             success: function(response) {
                 $('#loader').hide();
                 var data = response.data;
