@@ -34,7 +34,7 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
 <html>
 <head>
     <?php Header::setupHeader(['datatables', 'datatables-colreorder', 'datatables-dt', 'datatables-bs']); ?>
-    <title><?php echo xlt("Patient Finder"); ?></title>
+    <title><?php echo xlt("Aign Analytics"); ?></title>
     <link rel="stylesheet" href="<?php echo $webroot; ?>/public/themes/aign_style.css?v=<?php echo $v_js_includes; ?>">
 
 
