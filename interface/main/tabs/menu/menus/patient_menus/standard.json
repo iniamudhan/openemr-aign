@@ -82,16 +82,7 @@
         "children": [],
         "requirement": 0
     },
-    {
-        "label": "Analytics",
-        "menu_id": "aign_analytics",
-        "target": "main",
-        "on_click":"top.restoreSession()",
-        "url": "interface/reports/aign_analytics.php",
-        "pid":"false",
-        "children": [],
-        "requirement": 0
-    },
+    
     {
         "label": "PRO{{Patient Reported Outcomes}}",
         "menu_id": "patient_reported_outcomes",

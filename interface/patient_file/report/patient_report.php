@@ -113,6 +113,15 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                 </div>
             </fieldset>
 
+            <fieldset id="ai-dischargesummary">
+                <div class="col-sm-12">
+                    <span class='title oe-report-section-header'>AI - Insight Summary</span>
+                    <textarea class="form-control" name='ai_insight_summary_text' id="ai_insight_summary_text" rows="3"></textarea>
+                    <button type="button" class="btn btn-primary btn-save btn-sm" onclick="generateAIInsightSummary()">Generate Summary</button>
+                    <div id="ai_insight_summary"></div>
+                </div>
+            </fieldset>
+
             <?php
             if ($GLOBALS['activate_ccr_ccd_report']) { // show CCR/CCD reporting options ?>
                 <div class="mt-3" id="ccr_report">
@@ -584,6 +593,34 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                         console.log(jqXHR);
                     }
                 });
+            }
+
+            function generateAIInsightSummary(){
+                var docInsightMsg = document.getElementById('ai_insight_summary_text').value;
+                if(docInsightMsg){
+                $.ajax({
+                    type: "POST",
+                    url: "https://y2druc0yvk.execute-api.us-east-1.amazonaws.com/dev/message",
+                    data: JSON.stringify({"message": <?php echo  ?>}),
+                    contentType: "application/json;",
+                    crossDomain: true,
+                    dataType: "json",
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                    },
+                    success: function (data, status, jqXHR) {
+                        console.log(data);
+                        $("#ai_insight_summary").html(data.body.htmlValue)
+                        newWindow.document.write(data.body.htmlValue);
+                    },
+
+                    error: function (jqXHR, status) {
+                        console.log(jqXHR);
+                    }
+                });
+            } else {
+                alert("Please enter a message");
+            }
             }
     </script>
 <script>
