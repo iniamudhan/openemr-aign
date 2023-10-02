@@ -198,7 +198,7 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-pie pt-4 pb-2"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                                        <canvas id="myPieChart" width="1068" height="490" style="display: block; width: 534px; height: 245px;" class="chartjs-render-monitor"></canvas>
+                                        <canvas id="myPieChart" width="1068"  style="display: block; width: 534px;" class="chartjs-render-monitor"></canvas>
                                     </div>
                                     <div class="mt-4 text-center small">
                                         <span class="mr-2">
