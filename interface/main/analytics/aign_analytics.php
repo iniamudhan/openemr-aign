@@ -149,8 +149,8 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
 <div class="row">
 <div class="col-xl-12 col-lg-12">
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="aign-header m-0 font-weight-bold">Symptoms Distribution</h6>
+        <div class="aign-header card-header py-3">
+            <h6 class=" m-0 font-weight-bold">Symptoms Distribution</h6>
         </div>
         <div id="symptoms-container" class="card-body"></div>
     </div>
@@ -159,8 +159,8 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
 <div class="row">
 <div class="col-xl-12 col-lg-12">
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="aign-header m-0 font-weight-bold">Isolated Symptoms</h6>
+        <div class="aign-header card-header py-3">
+            <h6 class="m-0 font-weight-bold">Isolated Symptoms</h6>
         </div>
         <!-- <div id="word-cloud-container" style="width: 800px; height: 400px;"></div> -->
         <table id="patient-table"class="table table-bordered">
