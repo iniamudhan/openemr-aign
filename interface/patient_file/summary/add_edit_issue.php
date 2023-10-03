@@ -1049,7 +1049,7 @@ function getCodeText($code)
                     data: JSON.stringify({"patientId": "1", "new_medicine": $('#form_title').val()}),
                     success: function (data, status, jqXHR) {
                         console.log(data);
-                        if(data.body.message[0].message.includes("yes")){
+                        if(data.body.message.length != 0 && data.body.message[0].message.includes("yes")){
                             $('#ai_med_sug').html(data.body.message[0].alternate_medicine);
                         }
                         else{
