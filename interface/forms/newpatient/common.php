@@ -965,6 +965,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
             })
             diganosisRef.addEventListener('click', (e) => {
                 if (recordingDone) {
+                    $('#recorder').hide();
                     makeDiagnosis()
                 } else {
                     console.log('Diagnosis could not made without recording');
