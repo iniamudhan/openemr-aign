@@ -163,7 +163,7 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
             <h6 class="m-0 font-weight-bold text-primary">Isolation</h6>
         </div>
         <!-- <div id="word-cloud-container" style="width: 800px; height: 400px;"></div> -->
-        <table class="table table-bordered">
+        <table id="patient-table"class="table table-bordered">
   <thead>
     <tr>
       <th scope="col">Patient ID</th>
@@ -171,7 +171,7 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
       <th scope="col">Symptoms</th>
     </tr>
   </thead>
-  <tbody id="patient-table">
+  <tbody>
   </tbody>
 </table>
 
