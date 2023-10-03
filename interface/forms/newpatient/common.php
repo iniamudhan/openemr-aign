@@ -901,6 +901,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
     <script src="main.js">
     </script>
     <script>
+         var wavesurfer;
         document.addEventListener('DOMContentLoaded', function () {
             const recordRef = document.querySelector("#record")
             const diganosisRef = document.querySelector("#diagnosis")
@@ -923,7 +924,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                 "autoCenter": true,
             }
 
-            var wavesurfer = WaveSurfer.create({
+            wavesurfer = WaveSurfer.create({
                 container: '#mic', 
                 waveColor: 'rgb(200, 0, 200)',
                 progressColor: 'rgb(100, 0, 100)',
@@ -967,7 +968,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                 if (recordingDone) {
                     $('#recorder').hide();
                     makeDiagnosis()
-                    $('#recorder').hide();
+                    wavesurfer.playPause()
                 } else {
                     console.log('Diagnosis could not made without recording');
                 }
