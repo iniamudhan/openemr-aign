@@ -111,8 +111,7 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                     <?php echo xlt('Discharge Summary') ?>
                 </legend>
                 <div class="col-sm-12" style="text-align:center">
-                    <!-- <span class='title oe-report-section-header'>AI - Discharge Summary</span> -->
-                    <button type="button" class="btn btn-primary btn-save btn-sm btn-aign" id="ai_generate_ai_summary" onclick="generateAIDSummary()">Generate Report</button>
+                    <button type="button" class="btn btn-primary btn-save btn-sm btn-aign" id="ai_generate_ai_summary" onclick="generateAIDSummary()">Generate Discharge Summary</button>
                 </div>
             </fieldset>
 
@@ -124,14 +123,14 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                     <label> Doctor's Message </label>
                     <textarea class="form-control" name='ai_insight_summary_text' id="ai_insight_summary_text" rows="3"></textarea>
                     <br/>
-                    <button type="button" class="btn btn-primary btn-save btn-sm" id="ai_gen_msg_btn" onclick="generateAIInsightSummary()">Generate Message</button>
+                    <button type="button" class="btn btn-primary btn-save btn-sm  btn-aign" style="margin-bottom:10px;" id="ai_gen_msg_btn" onclick="generateAIInsightSummary()">Generate Message</button>
                     <br />
                     <label> Generated Message </label>
                     
                     <textarea name="ai_insight_summary_result" id="ai_insight_summary_result" class="form-control" cols="80"
                                 rows="6"></textarea>
                     <br/>
-                    <button type="button" class="btn btn-primary btn-save btn-sm">Send Email</button>
+                    <button type="button" class="btn btn-primary btn-save btn-sm  btn-aign">Send Email</button>
                         
                 </div>
             </fieldset>
