@@ -237,13 +237,14 @@ $(document).ready(function() {
 
     function fetchDataAndGenerateTable() {
         $('#loader').show();
-        var patientNames = [
-            {id: 654 : name: "John Doe"},
-            {id: 881 : name:"Jane Smith"},
-            {id: 358 : name:"Alice Johnson"},   
-            {id: 537 : name:"Bob Wilson"},
-            {id: 436 : name:"John Smith"},
+        var patients = [
+            { id: 654, name: "John Doe" },
+            { id: 881, name: "Jane Smith" },
+            { id: 358, name: "Alice Johnson" },
+            { id: 537, name: "Bob Wilson" },
+            { id: 436, name: "John Smith" },
         ];
+
         $.ajax({
             url: 'http://3.236.189.236:5000/analytics/isolation',
             type: 'GET',
