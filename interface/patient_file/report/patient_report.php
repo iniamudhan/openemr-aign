@@ -124,11 +124,13 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                     <label> Doctor's Message </label>
                     <textarea class="form-control" name='ai_insight_summary_text' id="ai_insight_summary_text" rows="3"></textarea>
                     <br/>
+                    <button type="button" class="btn btn-primary btn-save btn-sm" id="ai_gen_msg_btn" onclick="generateAIInsightSummary()">Generate Message</button>
+                    <br />
                     <label> Generated Message </label>
+                    
                     <textarea name="ai_insight_summary_result" id="ai_insight_summary_result" class="form-control" cols="80"
                                 rows="6"></textarea>
                     <br/>
-                    <button type="button" class="btn btn-primary btn-save btn-sm" onclick="generateAIInsightSummary()">Generate Summary</button>
                     <button type="button" class="btn btn-primary btn-save btn-sm">Send Email</button>
                         
                 </div>
@@ -611,6 +613,7 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
             }
 
             function generateAIInsightSummary(){
+                $('#ai_gen_msg_btn').val("Generating...");
                 var docInsightMsg = document.getElementById('ai_insight_summary_text').value;
                 if(docInsightMsg){
                 $.ajax({
@@ -620,9 +623,11 @@ $oemr_ui = new OemrUI($arrOeUiSettings);
                     success: function (data, status, jqXHR) {
                         console.log(data);
                         $("#ai_insight_summary_result").val(data.body.message)
+                        $('#ai_gen_msg_btn').val("Generate Message");
                         // newWindow.document.write(data.body.message);
                     },
                     error: function (jqXHR, status) {
+                        $('#ai_gen_msg_btn').val("Generate Message");
                         console.log(jqXHR);
                     }
                 });
