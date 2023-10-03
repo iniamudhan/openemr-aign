@@ -867,7 +867,7 @@ function getCodeText($code)
                             <?php if (($irow['type'] ?? '') == 'medication') : ?>
                                 <fieldset>
                                     <legend class="aign-header">
-                                        <?php echo xlt('AI - Drug Medication Suggestion') ?>
+                                        <?php echo xlt('Drug Medication Suggestion') ?>
                                     </legend>
                                     <div class="form-row">
                                         <span class="powered-by-aign">Powered by AIGn</span>
@@ -1049,7 +1049,12 @@ function getCodeText($code)
                     data: JSON.stringify({"patientId": "1", "new_medicine": $('#form_title').val()}),
                     success: function (data, status, jqXHR) {
                         console.log(data);
-                        $('#ai_med_sug').html(data.body.message[0].alternate_medicine);
+                        if(data.body.message[0].message.includes("yes")){
+                            $('#ai_med_sug').html(data.body.message[0].alternate_medicine);
+                        }
+                        else{
+                            $('#ai_med_sug').html("New medication do not conflict with any of the old medications.");
+                        }
                     },
                     error: function (jqXHR, status) {
                         console.log(jqXHR);
