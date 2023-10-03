@@ -968,6 +968,7 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                 if (recordingDone) {
                     wavesurfer.playPause()
                     makeDiagnosis()
+                    $('#recorder').hide();
                 } else {
                     console.log('Diagnosis could not made without recording');
                 }
