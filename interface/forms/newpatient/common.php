@@ -209,6 +209,8 @@ $ires = sqlStatement("SELECT id, type, title, begdate FROM lists WHERE " .
                 if (submit) {
                     top.restoreSession();
                     $('#new-encounter-form').submit();
+                } else {
+                    console.log("could'nt submit");
                 }
             }
 
