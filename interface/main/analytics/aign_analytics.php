@@ -162,7 +162,19 @@ $loading = "<div class='spinner-border' role='status'><span class='sr-only'>" . 
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Isolation</h6>
         </div>
-        <div id="word-cloud-container" style="width: 800px; height: 400px;"></div>
+        <!-- <div id="word-cloud-container" style="width: 800px; height: 400px;"></div> -->
+        <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Patient ID</th>
+      <th scope="col">Patient Name</th>
+      <th scope="col">Symptoms</th>
+    </tr>
+  </thead>
+  <tbody id="patient-table">
+  </tbody>
+</table>
+
     </div>
 </div>
 </div>
@@ -214,17 +226,24 @@ $(document).ready(function() {
         });
     }
 
-    function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
+//     function getRandomColor() {
+//   var letters = '0123456789ABCDEF';
+//   var color = '#';
+//   for (var i = 0; i < 6; i++) {
+//     color += letters[Math.floor(Math.random() * 16)];
+//   }
+//   return color;
+// }
 
-    function fetchDataAndGenerateWordCloud() {
+    function fetchDataAndGenerateTable() {
         $('#loader').show();
+        var patientNames = [
+            {id: 654 : name: "John Doe"},
+            {id: 881 : name:"Jane Smith"},
+            {id: 358 : name:"Alice Johnson"},   
+            {id: 537 : name:"Bob Wilson"},
+            {id: 436 : name:"John Smith"},
+        ];
         $.ajax({
             url: 'http://3.236.189.236:5000/analytics/isolation',
             type: 'GET',
@@ -237,41 +256,53 @@ $(document).ready(function() {
             success: function(response) {
                 $('#loader').hide();
                 var data = response.data;
-                var wordCloudData = data.map(function(word) {
-                   return { text: word, color: getRandomColor() }; 
-                });
 
-                var layout = d3.layout.cloud()
-                    .size([800, 400]) 
-                    .words(wordCloudData.map(function(d) {
-                        return { text: d.text, size: Math.random() * 30 + 10, color: d.color }; 
-                    }))
-                    .padding(5)
-                    .rotate(function() { return (Math.random() - 0.5) * 30; }) 
-                    .font("Arial")
-                    .fontSize(function(d) { return d.size; })
-                    .on("end", draw);
+                var tableBody = $('#patient-table tbody');
 
-            function draw(words) {
-                d3.select("#word-cloud-container").append("svg")
-                    .attr("width", layout.size()[0])
-                    .attr("height", layout.size()[1])
-                    .append("g")
-                    .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
-                    .selectAll("text")
-                .data(words)
-                .enter().append("text")
-                .style("font-size", function(d) { return d.size + "px"; })
-                .style("fill", function(d) { return d.color; }) 
-                .attr("text-anchor", "middle")
-                .attr("transform", function(d) {
-                return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-                })
-                .text(function(d) { return d.text; });
+                for (var i = 0; i < data.length; i++) {
+                    var randomPatient = patients[Math.floor(Math.random() * patients.length)];
+                    var newRow = '<tr>' +
+                    '<td>' + randomPatient.id + '</td>' +
+                    '<td>' + randomPatient.name + '</td>' +
+                    '<td>' + data[i] + '</td>' +
+                    '</tr>';
+                    tableBody.append(newRow);
+                }
+                // var wordCloudData = data.map(function(word) {
+                //    return { text: word, color: getRandomColor() }; 
+                // });
 
-            }   
+                // var layout = d3.layout.cloud()
+                //     .size([800, 400]) 
+                //     .words(wordCloudData.map(function(d) {
+                //         return { text: d.text, size: Math.random() * 30 + 10, color: d.color }; 
+                //     }))
+                //     .padding(5)
+                //     .rotate(function() { return (Math.random() - 0.5) * 30; }) 
+                //     .font("Arial")
+                //     .fontSize(function(d) { return d.size; })
+                //     .on("end", draw);
 
-                layout.start(); 
+            // function draw(words) {
+            //     d3.select("#word-cloud-container").append("svg")
+            //         .attr("width", layout.size()[0])
+            //         .attr("height", layout.size()[1])
+            //         .append("g")
+            //         .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+            //         .selectAll("text")
+            //     .data(words)
+            //     .enter().append("text")
+            //     .style("font-size", function(d) { return d.size + "px"; })
+            //     .style("fill", function(d) { return d.color; }) 
+            //     .attr("text-anchor", "middle")
+            //     .attr("transform", function(d) {
+            //     return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+            //     })
+            //     .text(function(d) { return d.text; });
+
+            // }   
+
+            //     layout.start(); 
 
             },
             error: function(error) {
@@ -282,7 +313,7 @@ $(document).ready(function() {
     }
 
     fetchDataAndGenerateDivs();
-    fetchDataAndGenerateWordCloud();
+    fetchDataAndGenerateTable();
 
 });
 </script>
